@@ -1,26 +1,26 @@
-import java.util.Collection;
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
 
 public class SushiDish {
     private String name;
     private String description;
     private int price;
+    private int restockLevel;
     private Map<Ingredient, Integer> recipe;
 
-    public SushiDish (String name, String description, int price) {
+    public SushiDish (String name, String description, int price, int restockLevel) {
         this.name = name;
         this.description = description;
         this.price = price;
-        recipe = new TreeMap<>();
+        this.restockLevel = restockLevel;
+        recipe = new TreeMap<>();           // Chose TreeMap so the recipe is neatly sorted alphabetically
     }
 
-    public void addIngredient (Ingredient ingredient, int quantity) {
+    public void addIngredient (Ingredient ingredient, Integer quantity) {
         recipe.put(ingredient, quantity);
     }
 
-    public String getRecipe () {
+    public String getIngredients() {
         StringBuffer recipeBuffer = new StringBuffer();
         recipeBuffer.append(this.name + " - " + this.description + "\n");
 
