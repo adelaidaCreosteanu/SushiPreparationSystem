@@ -42,4 +42,36 @@ public final class StockManagement {
             addDish(sushiDish, amount);
         }
     }
+
+    public synchronized void use (Ingredient ingredient, Integer amount) throws Exception {
+        if (ingredients.contains(ingredient) && amount > 0) {
+            Integer stock = ingredients.get(ingredient) - amount;
+
+            if (stock < 0) throw new Exception("Stock level cannot be negative!");      // TODO: Maybe create a custom Exception?
+
+            if (stock < ingredient.getRestockLevel()) {
+                System.out.println(ingredient.getName() + " has to be restocked!");
+            }
+
+            ingredients.put(ingredient, stock);
+        } else {
+            throw new Exception("Invalid method arguments!");
+        }
+    }
+
+    public synchronized void sell (SushiDish sushiDish, Integer amount) throws Exception {
+        if (dishes.contains(sushiDish) && amount > 0) {
+            Integer stock = dishes.get(sushiDish) - amount;
+
+            if (stock < 0) throw new Exception("Stock level cannot be negative");
+
+            if (stock < sushiDish.getRestockLevel()) {
+                System.out.println(sushiDish.getName() + " has to be restocked!");
+            }
+
+            dishes.put(sushiDish, stock);
+        } else {
+            throw new Exception("Invalid arguments!");
+        }
+    }
 }
