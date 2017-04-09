@@ -42,4 +42,8 @@ public class SushiDish {
     public int getPrice() {
         return price;
     }
+
+    public int getRestockLevel() {
+        return restockLevel;
+    }
 }
