@@ -4,7 +4,7 @@ public class Ingredient implements Comparable<Ingredient> {
     private Supplier supplier;
     private int restockLevel;
 
-    public Ingredient (String name, String unit, Supplier supplier, int restockLevel) {
+    public Ingredient(String name, String unit, Supplier supplier, int restockLevel) {
         this.name = name;
         this.unit = unit;           // TODO: This could lead to mistakes as it's a string
         this.supplier = supplier;

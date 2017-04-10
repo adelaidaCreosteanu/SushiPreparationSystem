@@ -8,7 +8,7 @@ public class SushiDish {
     private int restockLevel;
     private Map<Ingredient, Integer> recipe;
 
-    public SushiDish (String name, String description, int price, int restockLevel) {
+    public SushiDish(String name, String description, int price, int restockLevel) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -16,7 +16,7 @@ public class SushiDish {
         recipe = new TreeMap<>();           // Chose TreeMap so the recipe is neatly sorted alphabetically
     }
 
-    public void addIngredient (Ingredient ingredient, Integer quantity) {
+    public void addIngredient(Ingredient ingredient, Integer quantity) {
         recipe.put(ingredient, quantity);
     }
 

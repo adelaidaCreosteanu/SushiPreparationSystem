@@ -3,6 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="a2f8a52b-c753-4fe0-b60d-226daf1560a2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Ingredient.java" afterPath="$PROJECT_DIR$/src/Ingredient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/StockManagement.java" afterPath="$PROJECT_DIR$/src/StockManagement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Supplier.java" afterPath="$PROJECT_DIR$/src/Supplier.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SushiDish.java" afterPath="$PROJECT_DIR$/src/SushiDish.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TestMain.java" afterPath="$PROJECT_DIR$/src/TestMain.java" />
     </list>
     <list id="5b036eb6-2b6b-4aca-80f0-bcd0cf6ef6f0" name="Rejected commit: Default" comment="Started part 2; Added restockLevel in Ingredient and SushiDish" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -22,12 +27,9 @@
       <file leaf-file-name="Supplier.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Supplier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="9" column="29" lean-forward="false" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
-              <folding>
-                <element signature="e#280#281#0" expanded="false" />
-                <element signature="e#311#312#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="102">
+              <caret line="6" column="30" lean-forward="false" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -36,28 +38,20 @@
         <entry file="file://$PROJECT_DIR$/src/Ingredient.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
-              <caret line="29" column="34" lean-forward="false" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
+              <caret line="29" column="34" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding>
-                <element signature="e#501#502#0" expanded="false" />
-                <element signature="e#564#565#0" expanded="false" />
-                <element signature="e#595#596#0" expanded="false" />
-                <element signature="e#622#623#0" expanded="false" />
-                <element signature="e#653#654#0" expanded="false" />
-                <element signature="e#680#681#0" expanded="false" />
+                <element signature="e#818#819#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StockManagement.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="StockManagement.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/StockManagement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-372">
-              <caret line="4" column="48" lean-forward="false" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="48" />
-              <folding>
-                <element signature="e#766#767#0" expanded="true" />
-                <element signature="e#803#804#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="529">
+              <caret line="63" column="59" lean-forward="true" selection-start-line="63" selection-start-column="59" selection-end-line="63" selection-end-column="59" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -65,22 +59,21 @@
       <file leaf-file-name="SushiDish.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SushiDish.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="39" column="5" lean-forward="false" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+            <state relative-caret-position="0">
+              <caret line="0" column="21" lean-forward="true" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1285#1286#0" expanded="true" />
-                <element signature="e#1320#1321#0" expanded="true" />
+                <element signature="e#1156#1157#0" expanded="true" />
+                <element signature="e#1190#1191#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestMain.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TestMain.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TestMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="45" lean-forward="false" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="45" />
+            <state relative-caret-position="289">
+              <caret line="17" column="41" lean-forward="true" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -111,15 +104,15 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Supplier.java" />
         <option value="$PROJECT_DIR$/src/StockIngredient.java" />
-        <option value="$PROJECT_DIR$/src/Ingredient.java" />
         <option value="$PROJECT_DIR$/src/IngredientsManagement.java" />
         <option value="$PROJECT_DIR$/src/management.java" />
         <option value="$PROJECT_DIR$/src/Management.java" />
-        <option value="$PROJECT_DIR$/src/TestMain.java" />
+        <option value="$PROJECT_DIR$/src/Supplier.java" />
+        <option value="$PROJECT_DIR$/src/Ingredient.java" />
         <option value="$PROJECT_DIR$/src/SushiDish.java" />
         <option value="$PROJECT_DIR$/src/StockManagement.java" />
+        <option value="$PROJECT_DIR$/src/TestMain.java" />
       </list>
     </option>
   </component>
@@ -150,6 +143,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -179,8 +174,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -613,7 +606,8 @@
       <updated>1491730592826</updated>
       <workItem from="1491730599327" duration="5579000" />
       <workItem from="1491761785368" duration="2868000" />
-      <workItem from="1491769315166" duration="3203000" />
+      <workItem from="1491769315166" duration="3378000" />
+      <workItem from="1491814277905" duration="955000" />
     </task>
     <task id="LOCAL-00001" summary="Started part 2; Added restockLevel in Ingredient and SushiDish">
       <created>1491768808951</created>
@@ -636,11 +630,18 @@
       <option name="project" value="LOCAL" />
       <updated>1491773488044</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added methods that decrement the stock of ingredients/dishes">
+      <created>1491773532173</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1491773532173</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11650000" />
+    <option name="totallyTimeSpent" value="12780000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1924" height="1056" extended-state="0" />
@@ -649,18 +650,19 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13251074" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1335837" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -672,7 +674,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -687,6 +688,7 @@
     <MESSAGE value="Started part 2; Added restockLevel in Ingredient and SushiDish" />
     <MESSAGE value="Added methods that decrement the stock of ingredients/dishes" />
     <option name="LAST_COMMIT_MESSAGE" value="Added methods that decrement the stock of ingredients/dishes" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -699,12 +701,54 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Supplier.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ingredient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="29" column="34" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding>
+            <element signature="e#818#819#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/StockManagement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="48" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SushiDish.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="39" column="5" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding>
+            <element signature="e#1156#1157#0" expanded="true" />
+            <element signature="e#1190#1191#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Supplier.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="29" lean-forward="false" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
-          <folding>
-            <element signature="e#280#281#0" expanded="false" />
-            <element signature="e#311#312#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -713,12 +757,7 @@
         <state relative-caret-position="357">
           <caret line="29" column="34" lean-forward="false" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
           <folding>
-            <element signature="e#501#502#0" expanded="false" />
-            <element signature="e#564#565#0" expanded="false" />
-            <element signature="e#595#596#0" expanded="false" />
-            <element signature="e#622#623#0" expanded="false" />
-            <element signature="e#653#654#0" expanded="false" />
-            <element signature="e#680#681#0" expanded="false" />
+            <element signature="e#818#819#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -727,10 +766,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="25" column="5" lean-forward="false" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-          <folding>
-            <element signature="e#766#767#0" expanded="true" />
-            <element signature="e#803#804#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -739,9 +775,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1285#1286#0" expanded="true" />
-            <element signature="e#1320#1321#0" expanded="true" />
+            <element signature="e#1156#1157#0" expanded="true" />
+            <element signature="e#1190#1191#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -758,10 +793,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="29" lean-forward="false" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
-          <folding>
-            <element signature="e#280#281#0" expanded="false" />
-            <element signature="e#311#312#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -770,12 +802,7 @@
         <state relative-caret-position="289">
           <caret line="25" column="5" lean-forward="false" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
           <folding>
-            <element signature="e#501#502#0" expanded="false" />
-            <element signature="e#564#565#0" expanded="false" />
-            <element signature="e#595#596#0" expanded="false" />
-            <element signature="e#622#623#0" expanded="false" />
-            <element signature="e#653#654#0" expanded="false" />
-            <element signature="e#680#681#0" expanded="false" />
+            <element signature="e#818#819#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -784,10 +811,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <element signature="e#766#767#0" expanded="true" />
-            <element signature="e#803#804#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -797,9 +821,8 @@
         <state relative-caret-position="323">
           <caret line="24" column="73" lean-forward="false" selection-start-line="24" selection-start-column="73" selection-end-line="24" selection-end-column="73" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1285#1286#0" expanded="true" />
-            <element signature="e#1320#1321#0" expanded="true" />
+            <element signature="e#1156#1157#0" expanded="true" />
+            <element signature="e#1190#1191#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -813,71 +836,58 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/StockIngredient.java" />
-    <entry file="file://$PROJECT_DIR$/src/Supplier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="9" column="29" lean-forward="false" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
-          <folding>
-            <element signature="e#280#281#0" expanded="false" />
-            <element signature="e#311#312#0" expanded="false" />
-          </folding>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Ingredient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
-          <caret line="29" column="34" lean-forward="false" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
+          <caret line="29" column="34" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
-            <element signature="e#501#502#0" expanded="false" />
-            <element signature="e#564#565#0" expanded="false" />
-            <element signature="e#595#596#0" expanded="false" />
-            <element signature="e#622#623#0" expanded="false" />
-            <element signature="e#653#654#0" expanded="false" />
-            <element signature="e#680#681#0" expanded="false" />
+            <element signature="e#818#819#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestMain.java">
+    <entry file="file://$PROJECT_DIR$/src/Supplier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="45" lean-forward="false" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="45" />
+        <state relative-caret-position="102">
+          <caret line="6" column="30" lean-forward="false" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SushiDish.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="39" column="5" lean-forward="false" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+        <state relative-caret-position="0">
+          <caret line="0" column="21" lean-forward="true" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1285#1286#0" expanded="true" />
-            <element signature="e#1320#1321#0" expanded="true" />
+            <element signature="e#1156#1157#0" expanded="true" />
+            <element signature="e#1190#1191#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/StockManagement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-372">
-          <caret line="4" column="48" lean-forward="false" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="48" />
-          <folding>
-            <element signature="e#766#767#0" expanded="true" />
-            <element signature="e#803#804#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="529">
+          <caret line="63" column="59" lean-forward="true" selection-start-line="63" selection-start-column="59" selection-end-line="63" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="41" lean-forward="true" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>

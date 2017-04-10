@@ -9,24 +9,24 @@ public final class StockManagement {
         dishes = new Hashtable<>();
     }
 
-    public synchronized void addIngredient (Ingredient ingredient, Integer stock) {
+    public synchronized void addIngredient(Ingredient ingredient, Integer stock) {
         ingredients.put(ingredient, stock);
     }
 
-    public void addIngredient (Ingredient ingredient) {
+    public void addIngredient(Ingredient ingredient) {
         addIngredient(ingredient, 0);
     }
 
-    public synchronized void addDish (SushiDish sushiDish, Integer stock) {
+    public synchronized void addDish(SushiDish sushiDish, Integer stock) {
         dishes.put(sushiDish, stock);
     }
 
-    public void addDish (SushiDish sushiDish) {
+    public void addDish(SushiDish sushiDish) {
         addDish(sushiDish, 0);
     }
 
-    public synchronized void restockIngredient (Ingredient ingredient, Integer amount) {
-        if (ingredients.contains(ingredient)) {
+    public synchronized void restockIngredient(Ingredient ingredient, Integer amount) {
+        if (ingredients.containsKey(ingredient)) {
             Integer stock = ingredients.get(ingredient) + amount;
             ingredients.put(ingredient, stock);
         } else {
@@ -34,8 +34,8 @@ public final class StockManagement {
         }
     }
 
-    public synchronized void restockDish (SushiDish sushiDish, Integer amount) {
-        if (dishes.contains(sushiDish)) {
+    public synchronized void prepareDish(SushiDish sushiDish, Integer amount) {
+        if (dishes.containsKey(sushiDish)) {
             Integer stock = dishes.get(sushiDish) + amount;
             dishes.put(sushiDish, stock);
         } else {
@@ -43,14 +43,14 @@ public final class StockManagement {
         }
     }
 
-    public synchronized void use (Ingredient ingredient, Integer amount) throws Exception {
-        if (ingredients.contains(ingredient) && amount > 0) {
+    public synchronized void use(Ingredient ingredient, Integer amount) throws Exception {
+        if (ingredients.containsKey(ingredient) && amount > 0) {
             Integer stock = ingredients.get(ingredient) - amount;
 
             if (stock < 0) throw new Exception("Stock level cannot be negative!");      // TODO: Maybe create a custom Exception?
 
             if (stock < ingredient.getRestockLevel()) {
-                System.out.println(ingredient.getName() + " has to be restocked!");
+                System.err.println(ingredient.getName() + " has to be restocked!");
             }
 
             ingredients.put(ingredient, stock);
@@ -59,14 +59,14 @@ public final class StockManagement {
         }
     }
 
-    public synchronized void sell (SushiDish sushiDish, Integer amount) throws Exception {
-        if (dishes.contains(sushiDish) && amount > 0) {
+    public synchronized void sell(SushiDish sushiDish, Integer amount) throws Exception {
+        if (dishes.containsKey(sushiDish) && amount > 0) {
             Integer stock = dishes.get(sushiDish) - amount;
 
             if (stock < 0) throw new Exception("Stock level cannot be negative");
 
             if (stock < sushiDish.getRestockLevel()) {
-                System.out.println(sushiDish.getName() + " has to be restocked!");
+                System.err.println(sushiDish.getName() + " has to be restocked!");
             }
 
             dishes.put(sushiDish, stock);
