@@ -1,5 +1,7 @@
 import java.util.Hashtable;
 
+// TODO: make this a singleton pattern?
+
 public final class StockManagement {
     private Hashtable<Ingredient, Integer> ingredients;     // Ingredients with stock levels
     private Hashtable<SushiDish, Integer> dishes;           // Dishes with stock levels
@@ -25,53 +27,70 @@ public final class StockManagement {
         addDish(sushiDish, 0);
     }
 
-    public synchronized void restockIngredient(Ingredient ingredient, Integer amount) {
+    public void restockIngredient(Ingredient ingredient, Integer amount) {
         if (ingredients.containsKey(ingredient)) {
-            Integer stock = ingredients.get(ingredient) + amount;
-            ingredients.put(ingredient, stock);
+            synchronized (this) {
+                ingredients.put(ingredient, ingredients.get(ingredient) + amount);
+            }
+            System.out.println("Successfully restocked ingredient " + ingredient.getName());
         } else {
             addIngredient(ingredient, amount);
         }
     }
 
-    public synchronized void prepareDish(SushiDish sushiDish, Integer amount) {
+    public void restockDish(SushiDish sushiDish, Integer amount) {
         if (dishes.containsKey(sushiDish)) {
-            Integer stock = dishes.get(sushiDish) + amount;
-            dishes.put(sushiDish, stock);
+            synchronized (this) {
+                dishes.put(sushiDish, dishes.get(sushiDish) + amount);
+            }
+            System.out.println("Successfully restocked dish " + sushiDish.getName() + "\nNew quantity: " + dishes.get(sushiDish));
         } else {
             addDish(sushiDish, amount);
         }
     }
 
-    public synchronized void use(Ingredient ingredient, Integer amount) throws Exception {
+    public void use(Ingredient ingredient, Integer amount) throws Exception {
         if (ingredients.containsKey(ingredient) && amount > 0) {
             Integer stock = ingredients.get(ingredient) - amount;
 
             if (stock < 0) throw new Exception("Stock level cannot be negative!");      // TODO: Maybe create a custom Exception?
 
             if (stock < ingredient.getRestockLevel()) {
-                System.err.println(ingredient.getName() + " has to be restocked!");
+                System.err.println(ingredient.getName() + " has to be restocked!");     // TODO: notify drones?
             }
 
-            ingredients.put(ingredient, stock);
+            synchronized (this) {
+                ingredients.put(ingredient, stock);
+            }
         } else {
-            throw new Exception("Invalid method arguments!");
+            throw new Exception("Invalid method arguments!");                           // TODO: throw more specialised exception?
         }
     }
 
-    public synchronized void sell(SushiDish sushiDish, Integer amount) throws Exception {
+    public void sell(SushiDish sushiDish, Integer amount) throws Exception {
         if (dishes.containsKey(sushiDish) && amount > 0) {
             Integer stock = dishes.get(sushiDish) - amount;
 
-            if (stock < 0) throw new Exception("Stock level cannot be negative");
+            if (stock < 0) throw new Exception("Stock level cannot be negative");       // TODO: Maybe create a custom Exception?
 
-            if (stock < sushiDish.getRestockLevel()) {
-                System.err.println(sushiDish.getName() + " has to be restocked!");
+            synchronized (this) {
+                if (stock < sushiDish.getRestockLevel()) {
+                    this.notifyAll();
+                }
+
+                dishes.put(sushiDish, stock);
             }
 
-            dishes.put(sushiDish, stock);
         } else {
-            throw new Exception("Invalid arguments!");
+            throw new Exception("Invalid method arguments!");                           // TODO: throw more specialised exception?
         }
+    }
+
+    public synchronized Hashtable getIngredients() {
+        return ingredients;
+    }
+
+    public synchronized Hashtable getDishes() {
+        return dishes;
     }
 }

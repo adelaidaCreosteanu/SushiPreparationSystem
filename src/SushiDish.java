@@ -6,37 +6,37 @@ public class SushiDish {
     private String description;
     private int price;
     private int restockLevel;
-    private Map<Ingredient, Integer> recipe;
+    private Map<Ingredient, Integer> ingredients;
 
     public SushiDish(String name, String description, int price, int restockLevel) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.restockLevel = restockLevel;
-        recipe = new TreeMap<>();           // Chose TreeMap so the recipe is neatly sorted alphabetically
+        ingredients = new TreeMap<>();           // Chose TreeMap so the ingredients is neatly sorted alphabetically
     }
 
-    public void addIngredient(Ingredient ingredient, Integer quantity) {
-        recipe.put(ingredient, quantity);
+    public void addIngredient(Ingredient ingredient, Integer amount) {
+        ingredients.put(ingredient, amount);
     }
 
-    public String getIngredients() {
+    public String getRecipe() {
         StringBuffer recipeBuffer = new StringBuffer();
-        recipeBuffer.append(this.name + " - " + this.description + "\n");
-
-        for (Ingredient ingredient : recipe.keySet()) {
-            recipeBuffer.append(ingredient.getName() + ": " + recipe.get(ingredient) + "\n");
-        }
-
+//        recipeBuffer.append(this.name + " - " + this.description + "\n");
+//
+//        for (Ingredient ingredient : ingredients.keySet()) {
+//            recipeBuffer.append(ingredient.getName() + ": " + ingredients.get(ingredient) + "\n");
+//        }
+//
         return recipeBuffer.toString();
+    }
+
+    public Map getIngredients() {
+        return ingredients;
     }
 
     public String getName() {
         return name;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     public int getPrice() {
