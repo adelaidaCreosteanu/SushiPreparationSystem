@@ -28,8 +28,6 @@ public final class StockManagement {
 
     public void restockIngredient(Ingredient ingredient, Integer amount) throws Exception {
         updateIngredientStock(ingredient, ingredientStock.get(ingredient) + amount);
-
-        System.out.println("Successfully restocked ingredient " + ingredient.getName() + "\nNew quantity: " + ingredientStock.get(ingredient));
     }
 
     public void useIngredient(Ingredient ingredient, Integer amount) throws Exception {
@@ -55,8 +53,6 @@ public final class StockManagement {
 
     public void restockDish(SushiDish sushiDish, Integer amount) throws Exception {
         updateDishStock(sushiDish, dishStock.get(sushiDish) + amount);
-
-        System.out.println("Successfully restocked dish " + sushiDish.getName() + "\nNew quantity: " + dishStock.get(sushiDish));
     }
 
     public void sellDish(SushiDish sushiDish, Integer amount) throws Exception {

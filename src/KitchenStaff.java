@@ -25,6 +25,7 @@ public class KitchenStaff implements Runnable {
                 for (SushiDish dish : dishes.keySet()) {
                     if (dishes.get(dish) < dish.getRestockLevel()) {
                         prepareDish(dish);
+                        System.out.println(Thread.currentThread().getName() + " increased stock to " + dishes.get(dish));
                     }
                 }
 
@@ -36,17 +37,20 @@ public class KitchenStaff implements Runnable {
     }
 
     private void prepareDish(SushiDish dish) throws Exception {
+        // Randomising time spent on this dish
         Integer timeSpent = (int) (Math.random() * (maxTime - minTime) + minTime);
         System.out.println(Thread.currentThread().getName() + " preparing " + dish.getName() + " for " + timeSpent * 1000 + " ms.");
         Thread.sleep(timeSpent * 1000);
 
         Map<Ingredient, Integer> dishIngredients = dish.getIngredients();
 
+        // Using up ingredients
         for (Ingredient ingredient : dishIngredients.keySet()) {
             Integer amount = dishIngredients.get(ingredient);
             stockManagement.useIngredient(ingredient, amount);
         }
 
+        // Creating the dish
         stockManagement.restockDish(dish, 1);
     }
 }
