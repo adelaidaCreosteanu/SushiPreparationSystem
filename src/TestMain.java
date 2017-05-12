@@ -11,24 +11,27 @@ public class TestMain {
         salmonNigiri.addIngredient(salmon, 5);
         salmonNigiri.addIngredient(seaWeed, 6);
 
-        System.out.println(salmonNigiri.getRecipe());
 
         StockManagement management = new StockManagement();
 
-        management.addDish(salmonNigiri, 6);
-        management.addIngredient(rice, 100);
-        management.addIngredient(salmon, 100);
-        management.addIngredient(seaWeed, 100);
+        management.addNewDish(salmonNigiri);
+        management.addNewIngredient(rice);
+        management.addNewIngredient(salmon);
+        management.addNewIngredient(seaWeed);
 
-        KitchenStaff chef = new KitchenStaff(management);
-        KitchenStaff sousChef = new KitchenStaff(management);
-
-        new Thread(chef, "Chef").start();
-        new Thread(sousChef, "Sous-chef").start();
 
         try {
-            management.sell(salmonNigiri, 2);
-            management.sell(salmonNigiri, 1);
+            management.restockDish(salmonNigiri, 6);
+            management.restockIngredient(rice, 100);
+            management.restockIngredient(salmon, 100);
+            management.restockIngredient(seaWeed, 100);
+
+            new Thread(new KitchenStaff(management), "Chef").start();
+            new Thread(new KitchenStaff(management), "Sous-chef").start();
+
+            management.sellDish(salmonNigiri, 2);
+            management.sellDish(salmonNigiri, 1);
+            management.sellDish(salmonNigiri, 1);
         } catch (Exception e) {
             e.printStackTrace();
         }

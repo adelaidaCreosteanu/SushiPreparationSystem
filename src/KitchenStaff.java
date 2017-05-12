@@ -15,7 +15,7 @@ public class KitchenStaff implements Runnable {
             try {
                 Hashtable<SushiDish, Integer> dishes;
 
-                synchronized (stockManagement) {
+                synchronized (stockManagement) {        // Make this so it's constantly checking for items under stock
                     stockManagement.wait();
 
                     System.out.println(Thread.currentThread().getName() + " was notified that dish went under restock level.");
@@ -44,7 +44,7 @@ public class KitchenStaff implements Runnable {
 
         for (Ingredient ingredient : ingredients.keySet()) {
             Integer amount = ingredients.get(ingredient);
-            stockManagement.use(ingredient, amount);
+            stockManagement.useIngredient(ingredient, amount);
         }
 
         stockManagement.restockDish(dish, 1);

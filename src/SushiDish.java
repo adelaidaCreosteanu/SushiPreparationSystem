@@ -13,7 +13,7 @@ public class SushiDish {
         this.description = description;
         this.price = price;
         this.restockLevel = restockLevel;
-        ingredients = new TreeMap<>();           // Chose TreeMap so the ingredients is neatly sorted alphabetically
+        ingredients = new TreeMap<>();           // Chose TreeMap so the ingredients are neatly sorted alphabetically
     }
 
     public void addIngredient(Ingredient ingredient, Integer amount) {
@@ -31,7 +31,7 @@ public class SushiDish {
         return recipeBuffer.toString();
     }
 
-    public Map getIngredients() {
+    public synchronized Map getIngredients() {
         return ingredients;
     }
 
