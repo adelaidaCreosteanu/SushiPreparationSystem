@@ -3,17 +3,17 @@ import java.util.Hashtable;
 // TODO: make this a singleton pattern?
 
 public final class StockManagement {
-    private Hashtable<Ingredient, Integer> ingredients;     // Ingredients with current stock levels
-    private Hashtable<SushiDish, Integer> dishes;           // Dishes with current stock levels
+    private Hashtable<Ingredient, Integer> ingredientStock;     // Ingredients with current stock levels
+    private Hashtable<SushiDish, Integer> dishStock;           // Dishes with current stock levels
 
     public StockManagement() {
-        ingredients = new Hashtable<>();
-        dishes = new Hashtable<>();
+        ingredientStock = new Hashtable<>();
+        dishStock = new Hashtable<>();
     }
 
     public void addNewIngredient(Ingredient ingredient) {
         synchronized (ingredient) {
-            ingredients.put(ingredient, 0);
+            ingredientStock.put(ingredient, 0);
         }
     }
 
@@ -22,25 +22,25 @@ public final class StockManagement {
         if (stock < 0) throw new Exception("Stock cannot be negative!");
 
         synchronized (ingredient) {
-            ingredients.put(ingredient, stock);
+            ingredientStock.put(ingredient, stock);
         }
     }
 
     public void restockIngredient(Ingredient ingredient, Integer amount) throws Exception {
-        updateIngredientStock(ingredient, ingredients.get(ingredient) + amount);
+        updateIngredientStock(ingredient, ingredientStock.get(ingredient) + amount);
 
-        System.out.println("Successfully restocked ingredient " + ingredient.getName() + "\nNew quantity: " + ingredients.get(ingredient));
+        System.out.println("Successfully restocked ingredient " + ingredient.getName() + "\nNew quantity: " + ingredientStock.get(ingredient));
     }
 
     public void useIngredient(Ingredient ingredient, Integer amount) throws Exception {
-        if (!ingredients.containsKey(ingredient)) throw new Exception("This ingredient has not yet been added!");
+        if (!ingredientStock.containsKey(ingredient)) throw new Exception("This ingredient has not yet been added!");
 
-        updateIngredientStock(ingredient, ingredients.get(ingredient) - amount);
+        updateIngredientStock(ingredient, ingredientStock.get(ingredient) - amount);
     }
 
     public void addNewDish(SushiDish sushiDish) {
         synchronized (sushiDish) {
-            dishes.put(sushiDish, 0);
+            dishStock.put(sushiDish, 0);
         }
     }
 
@@ -49,27 +49,27 @@ public final class StockManagement {
         if (stock < 0) throw new Exception("Stock cannot be negative!");
 
         synchronized (sushiDish) {
-            dishes.put(sushiDish, stock);
+            dishStock.put(sushiDish, stock);
         }
     }
 
     public void restockDish(SushiDish sushiDish, Integer amount) throws Exception {
-        updateDishStock(sushiDish, dishes.get(sushiDish) + amount);
+        updateDishStock(sushiDish, dishStock.get(sushiDish) + amount);
 
-        System.out.println("Successfully restocked dish " + sushiDish.getName() + "\nNew quantity: " + dishes.get(sushiDish));
+        System.out.println("Successfully restocked dish " + sushiDish.getName() + "\nNew quantity: " + dishStock.get(sushiDish));
     }
 
     public void sellDish(SushiDish sushiDish, Integer amount) throws Exception {
-        if (!dishes.containsKey(sushiDish)) throw new Exception("Invalid method arguments!");
+        if (!dishStock.containsKey(sushiDish)) throw new Exception("Invalid method arguments!");
 
-        updateDishStock(sushiDish, dishes.get(sushiDish) - amount);
+        updateDishStock(sushiDish, dishStock.get(sushiDish) - amount);
     }
 
     public synchronized Hashtable getIngredients() {
-        return ingredients;
+        return ingredientStock;
     }
 
     public synchronized Hashtable getDishes() {
-        return dishes;
+        return dishStock;
     }
 }
