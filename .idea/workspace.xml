@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a2f8a52b-c753-4fe0-b60d-226daf1560a2" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SushiPreparationSystem/TestMain.class" afterPath="$PROJECT_DIR$/out/production/SushiPreparationSystem/TestMain.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KitchenStaff.java" afterPath="$PROJECT_DIR$/src/KitchenStaff.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/StockManagement.java" afterPath="$PROJECT_DIR$/src/StockManagement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TestMain.java" afterPath="$PROJECT_DIR$/src/TestMain.java" />
     </list>
     <list id="5b036eb6-2b6b-4aca-80f0-bcd0cf6ef6f0" name="Rejected commit: Default" comment="Started part 2; Added restockLevel in Ingredient and SushiDish" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -638,7 +636,7 @@
       <workItem from="1493640445309" duration="5996000" />
       <workItem from="1494340957880" duration="729000" />
       <workItem from="1494363036434" duration="797000" />
-      <workItem from="1494610776743" duration="6099000" />
+      <workItem from="1494610776743" duration="6160000" />
     </task>
     <task id="LOCAL-00001" summary="Started part 2; Added restockLevel in Ingredient and SushiDish">
       <created>1491768808951</created>
@@ -703,11 +701,18 @@
       <option name="project" value="LOCAL" />
       <updated>1494625794516</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="KitchenStaff done">
+      <created>1494627197676</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1494627197676</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39087000" />
+    <option name="totallyTimeSpent" value="39148000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -757,7 +762,8 @@
     <MESSAGE value="Started KitchenStaff.&#10;Still some issues with multithreading" />
     <MESSAGE value="Restructured StockManagement to have less responsability" />
     <MESSAGE value="A little refactoring never hurt nobody" />
-    <option name="LAST_COMMIT_MESSAGE" value="A little refactoring never hurt nobody" />
+    <MESSAGE value="KitchenStaff done" />
+    <option name="LAST_COMMIT_MESSAGE" value="KitchenStaff done" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
