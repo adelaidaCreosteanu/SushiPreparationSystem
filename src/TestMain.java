@@ -11,6 +11,12 @@ public class TestMain {
         salmonNigiri.addIngredient(salmon, 5);
         salmonNigiri.addIngredient(seaWeed, 6);
 
+        SushiDish tunaNigiri = new SushiDish("Tuna nigiri", "Tuna on rice tied with seaweed.", 5, 5);
+        Ingredient tuna = new Ingredient("Tuna", "g", supplier, 10);
+
+        tunaNigiri.addIngredient(rice, 10);
+        tunaNigiri.addIngredient(tuna, 5);
+        tunaNigiri.addIngredient(seaWeed, 6);
 
         StockManagement management = new StockManagement();
 
@@ -18,6 +24,8 @@ public class TestMain {
         management.addNewIngredient(rice);
         management.addNewIngredient(salmon);
         management.addNewIngredient(seaWeed);
+        management.addNewDish(tunaNigiri);
+        management.addNewIngredient(tuna);
 
 
         try {
@@ -25,13 +33,15 @@ public class TestMain {
             management.restockIngredient(rice, 100);
             management.restockIngredient(salmon, 100);
             management.restockIngredient(seaWeed, 100);
+            management.restockDish(tunaNigiri, 10);
+            management.restockIngredient(tuna, 50);
 
             new Thread(new KitchenStaff(management), "Chef").start();
             new Thread(new KitchenStaff(management), "Sous-chef").start();
 
             management.sellDish(salmonNigiri, 2);
-            management.sellDish(salmonNigiri, 1);
-            management.sellDish(salmonNigiri, 1);
+            management.sellDish(tunaNigiri, 6);
+            management.sellDish(salmonNigiri, 3);
         } catch (Exception e) {
             e.printStackTrace();
         }
