@@ -1,3 +1,4 @@
+// This class implements Comparable so the list of ingredients can be sorted alphabetically inside the TreeMap of a SushiDish
 public class Ingredient implements Comparable<Ingredient> {
     private String name;
     private String unit;
@@ -6,9 +7,18 @@ public class Ingredient implements Comparable<Ingredient> {
 
     public Ingredient(String name, String unit, Supplier supplier, int restockLevel) {
         this.name = name;
-        this.unit = unit;           // TODO: This could lead to mistakes as it's a string
         this.supplier = supplier;
         this.restockLevel = restockLevel;
+
+        switch (unit) {
+            case Measurement.GRAM:
+            case Measurement.MILILITERS:
+            case Measurement.PIECE:
+                this.unit = unit;
+                break;
+            default:
+                throw new Error("Invalid measurement unit!");
+        }
     }
 
     public int compareTo(Ingredient that) {

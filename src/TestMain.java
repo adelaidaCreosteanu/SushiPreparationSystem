@@ -3,16 +3,16 @@ public class TestMain {
     public static void main(String args[]) {
         SushiDish salmonNigiri = new SushiDish("Salmon nigiri", "Salmon on rice tied with seaweed.", 3, 5);
         Supplier supplier = new Supplier("BestSupplier", 10);
-        Ingredient rice = new Ingredient("Rice", "g", supplier, 10);
-        Ingredient salmon = new Ingredient("Salmon", "g", supplier, 10);
-        Ingredient seaWeed = new Ingredient("SeaWeed", "cm", supplier, 10);
+        Ingredient rice = new Ingredient("Rice", Measurement.GRAM, supplier, 10);
+        Ingredient salmon = new Ingredient("Salmon", Measurement.GRAM, supplier, 10);
+        Ingredient seaWeed = new Ingredient("SeaWeed", Measurement.PIECE, supplier, 10);
 
         salmonNigiri.addIngredient(rice, 10);
         salmonNigiri.addIngredient(salmon, 5);
         salmonNigiri.addIngredient(seaWeed, 6);
 
         SushiDish tunaNigiri = new SushiDish("Tuna nigiri", "Tuna on rice tied with seaweed.", 5, 5);
-        Ingredient tuna = new Ingredient("Tuna", "g", supplier, 10);
+        Ingredient tuna = new Ingredient("Tuna", Measurement.GRAM, supplier, 10);
 
         tunaNigiri.addIngredient(rice, 10);
         tunaNigiri.addIngredient(tuna, 5);
