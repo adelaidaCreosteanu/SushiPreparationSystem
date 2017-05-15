@@ -1,3 +1,6 @@
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 public class TestMain {
 
     public static void main(String args[]) {
@@ -28,22 +31,30 @@ public class TestMain {
         management.addNewIngredient(tuna);
 
 
-        try {
-            management.restockDish(salmonNigiri, 6);
-            management.restockIngredient(rice, 100);
-            management.restockIngredient(salmon, 100);
-            management.restockIngredient(seaWeed, 100);
-            management.restockDish(tunaNigiri, 10);
-            management.restockIngredient(tuna, 50);
+//        try {
+//            management.restockDish(salmonNigiri, 6);
+//            management.restockIngredient(rice, 100);
+//            management.restockIngredient(salmon, 100);
+//            management.restockIngredient(seaWeed, 100);
+//            management.restockDish(tunaNigiri, 10);
+//            management.restockIngredient(tuna, 50);
+//
+//            new Thread(new KitchenStaff(management), "Chef").start();
+//            new Thread(new KitchenStaff(management), "Sous-chef").start();
+//
+//            management.sellDish(salmonNigiri, 2);
+//            management.sellDish(tunaNigiri, 6);
+//            management.sellDish(salmonNigiri, 3);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
-            new Thread(new KitchenStaff(management), "Chef").start();
-            new Thread(new KitchenStaff(management), "Sous-chef").start();
+        Comms first = new Comms();
+        Comms second = new Comms();
+        second.setUpBusinessCommunication();
 
-            management.sellDish(salmonNigiri, 2);
-            management.sellDish(tunaNigiri, 6);
-            management.sellDish(salmonNigiri, 3);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        first.sendMessage("Here I am!");
+        System.out.println(second.receiveMessage().toString());
+
     }
 }

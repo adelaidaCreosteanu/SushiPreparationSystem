@@ -1,45 +1,56 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
-import java.net.InetSocketAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.io.*;
+import java.net.*;
 
 public class Comms {
-    private static final int PORTNO = 1111;
-    private InetSocketAddress socketAddress;
+    private int portNumber = 0;
+    private int businessPort = 1111;
     private ServerSocket serverSocket;
     private Socket sock;
 
-    public Comms(String hostName) {
-        socketAddress = new InetSocketAddress(hostName, PORTNO);
+    public void setUpBusinessCommunication() {
+        portNumber = 1111;
     }
 
-    public void sendMessage(Message msg) {
+    public void sendMessage(Object msgObject) {
         try {
-            sock = new Socket(socketAddress.getAddress(), PORTNO);
-            PrintStream printStream = new PrintStream(sock.getOutputStream());
-            printStream.println(msg.getContent());
+            sock = new Socket("localhost", businessPort);
+
+            // Serialize Message
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(sock.getOutputStream());
+            objectOutputStream.writeObject(new Message(msgObject, portNumber));
+
+            // Clean up
+            objectOutputStream.flush();
+            objectOutputStream.close();
+            sock.close();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public String receiveMessage() {
+    public Object receiveMessage() {
         try {
-            serverSocket = new ServerSocket(PORTNO);
+            serverSocket = new ServerSocket(portNumber);
             sock = serverSocket.accept();
 
-            InputStreamReader inputStreamReader = new InputStreamReader(sock.getInputStream());
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            // Deserialize Message
+            ObjectInputStream objectInputStream = new ObjectInputStream(sock.getInputStream());
+            Message msg = (Message) objectInputStream.readObject();
 
-            return bufferedReader.readLine();
+            // Clean up
+            objectInputStream.close();
+            sock.close();
+            serverSocket.close();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
+            return msg.getContent();
+
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        } catch (ClassNotFoundException e2) {
+            e2.printStackTrace();
         }
+
+        return null;
     }
 }

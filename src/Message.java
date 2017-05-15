@@ -1,19 +1,19 @@
-import java.net.InetAddress;
+import java.io.Serializable;
 
-public class Message {
-    private String content;
-    private InetAddress sender;
+public class Message implements Serializable {
+    private Object content;
+    private int senderPortNumber;
 
-    public Message(String content, InetAddress sender) {
+    public Message(Object content, int senderPortNumber) {
         this.content = content;
-        this.sender = sender;
+        this.senderPortNumber = senderPortNumber;
     }
 
-    public String getContent() {
+    public Object getContent() {
         return content;
     }
 
-    public InetAddress getSender() {
-        return sender;
+    public int getSender() {
+        return senderPortNumber;
     }
 }
