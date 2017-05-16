@@ -3,6 +3,8 @@ import java.util.Map;
 
 public class KitchenStaff implements Runnable {
     private StockManagement stockManagement;
+
+    // Not static or final because different kitchen staff could have different time bounds and some kitchen staff might improve, changing their working time
     private int minTime = 20;
     private int maxTime = 60;
 
@@ -10,7 +12,7 @@ public class KitchenStaff implements Runnable {
         this.stockManagement = stockManagement;
     }
 
-    public void setWorkingTime(int minTime, int maxTime) {
+    public void setWorkingTimeBounds(int minTime, int maxTime) {
         this.minTime = minTime;
         this.maxTime = maxTime;
     }
@@ -25,12 +27,10 @@ public class KitchenStaff implements Runnable {
                 for (SushiDish dish : dishes.keySet()) {
                     if (dishes.get(dish) < dish.getRestockLevel()) {
                         prepareDish(dish);
-                        System.out.println(Thread.currentThread().getName() + " increased stock to " + dishes.get(dish));
                     }
                 }
 
             } catch (Exception e) {
-                System.out.println(e.getMessage());
                 e.printStackTrace();
             }
         }
@@ -39,7 +39,6 @@ public class KitchenStaff implements Runnable {
     private void prepareDish(SushiDish dish) throws Exception {
         // Randomising time spent on this dish
         Integer timeSpent = (int) (Math.random() * (maxTime - minTime) + minTime);
-        System.out.println(Thread.currentThread().getName() + " preparing " + dish.getName() + " for " + timeSpent * 1000 + " ms.");
         Thread.sleep(timeSpent * 1000);
 
         Map<Ingredient, Integer> dishIngredients = dish.getIngredients();

@@ -1,6 +1,3 @@
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-
 public class TestMain {
 
     public static void main(String args[]) {
@@ -31,23 +28,18 @@ public class TestMain {
         management.addNewIngredient(tuna);
 
 
-//        try {
-//            management.restockDish(salmonNigiri, 6);
-//            management.restockIngredient(rice, 100);
-//            management.restockIngredient(salmon, 100);
-//            management.restockIngredient(seaWeed, 100);
-//            management.restockDish(tunaNigiri, 10);
-//            management.restockIngredient(tuna, 50);
-//
-//            new Thread(new KitchenStaff(management), "Chef").start();
-//            new Thread(new KitchenStaff(management), "Sous-chef").start();
-//
-//            management.sellDish(salmonNigiri, 2);
-//            management.sellDish(tunaNigiri, 6);
-//            management.sellDish(salmonNigiri, 3);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        try {
+            management.restockIngredient(rice, 100);
+            management.restockIngredient(salmon, 100);
+            management.restockIngredient(seaWeed, 100);
+            management.restockIngredient(tuna, 50);
+
+            new Thread(new KitchenStaff(management), "Chef").start();
+            new Thread(new KitchenStaff(management), "Sous-chef").start();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         Comms first = new Comms(true);
         Comms second = new Comms(false);
