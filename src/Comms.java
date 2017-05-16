@@ -28,9 +28,10 @@ public class Comms extends Thread {
 
     public void run() {
         while (true) {
-            receiveMessage();   // Maybe think about a way to get the return value to the object that instantiated this class
-            // Maybe pass "this" as a parameter for the constructor of this class. The boolean could be replaced with an if using instanceof
-            // Both applications could have a method which would be called from here to give them the message.
+            receiveMessage();
+            /* TODO: Maybe think about a way to get the return value to the object that instantiated this class
+            Maybe pass "this" as a parameter for the constructor of this class. The boolean could be replaced with an if using instanceof
+            Both applications could have a method which would be called from here to give them the message. */
         }
     }
 
@@ -53,7 +54,7 @@ public class Comms extends Thread {
 
     public Object receiveMessage() {
         try {
-            socket = serverSocket.accept();       // This method waits until a client connects to the server on the given port.
+            socket = serverSocket.accept();       // This method waits until a client connects to the server on the given port or there is a timeout
 
             // Deserialize Message
             ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
