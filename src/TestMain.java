@@ -49,12 +49,14 @@ public class TestMain {
 //            e.printStackTrace();
 //        }
 
-        Comms first = new Comms();
-        Comms second = new Comms();
-        second.setUpBusinessCommunication();
+        Comms first = new Comms(true);
+        Comms second = new Comms(false);
 
-        first.sendMessage("Here I am!");
-        System.out.println(second.receiveMessage().toString());
+
+        first.start();
+        second.start();
+        second.sendMessage("Finally I'm not stupid anymore");
+
 
     }
 }
