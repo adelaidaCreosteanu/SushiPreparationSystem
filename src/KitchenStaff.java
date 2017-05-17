@@ -3,7 +3,6 @@ import java.util.Map;
 
 public class KitchenStaff implements Runnable {
     private StockManagement stockManagement;
-
     // Not static or final because different kitchen staff could have different time bounds and some kitchen staff might improve, changing their working time
     private int minTime = 20;
     private int maxTime = 60;

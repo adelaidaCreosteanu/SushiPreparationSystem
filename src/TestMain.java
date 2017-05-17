@@ -49,6 +49,6 @@ public class TestMain {
         second.start();
         second.sendMessage("Finally I'm not stupid anymore");
 
-
+        ClientApplication clientApplication = new ClientApplication();
     }
 }

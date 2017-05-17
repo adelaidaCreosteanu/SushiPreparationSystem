@@ -37,7 +37,7 @@ public class Comms extends Thread {
 
     public void sendMessage(Object msgObject) {
         try {
-            socket = new Socket("localhost", receiverPortNumber);
+            socket = new Socket("localhost", receiverPortNumber);   // Might have to move this in the constructor
 
             // Serialize Message
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
