@@ -41,13 +41,13 @@ public class TestMain {
             e.printStackTrace();
         }
 
-        Comms first = new Comms(true);
-        Comms second = new Comms(false);
-
-
-        first.start();
-        second.start();
-        second.sendMessage("Finally I'm not stupid anymore");
+//        Comms first = new Comms(true);
+//        Comms second = new Comms(false);
+//
+//
+//        first.start();
+//        second.start();
+//        second.sendMessage("Finally I'm not stupid anymore");
 
         ClientApplication clientApplication = new ClientApplication();
     }
