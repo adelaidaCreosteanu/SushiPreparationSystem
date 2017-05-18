@@ -1,14 +1,20 @@
-public class Client {
+import java.util.ArrayList;
+
+public class Customer {
     private String username;
     private String password;
     private String address;
     private String postcode;
 
-    public Client(String username, String password, String address, String postcode) {
+    private ArrayList<Order> orders;
+
+    public Customer(String username, String password, String address, String postcode) {
         this.username = username;
         this.password = password;
         this.address = address;
         this.postcode = postcode;
+
+        orders = new ArrayList<>();
     }
 
     public String getUsername() {
@@ -25,5 +31,13 @@ public class Client {
 
     public String getPostcode() {
         return postcode;
+    }
+
+    public void addOrder(Order order) {
+        orders.add(order);
+    }
+
+    public ArrayList<Order> getOrders() {
+        return orders;
     }
 }

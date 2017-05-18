@@ -31,13 +31,17 @@ public class Comms extends Thread {
         }
     }
 
-    public void sendMessage(Object msgObject) {
+    public void sendMessage(int request) {
+        sendMessage(request, null);
+    }
+
+    public void sendMessage(int request, Object msgObject) {
         try {
             socket = new Socket("localhost", receiverPortNumber);
 
             // Serialize Message
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
-            objectOutputStream.writeObject(new Message(msgObject, portNumber));     // Give portNumber so receiver will know who to respond to
+            objectOutputStream.writeObject(new Message(request, msgObject, portNumber));     // Give portNumber so receiver will know who to respond to
 
             // Clean up
             objectOutputStream.flush();
@@ -61,6 +65,8 @@ public class Comms extends Thread {
 
             // Clean up
             objectInputStream.close();
+
+            // TODO: use msg.getRequest()
 
             return msg.getContent();
 

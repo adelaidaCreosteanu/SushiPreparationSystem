@@ -6,18 +6,23 @@ public class Order {
     public static final String ORDER_RECEIVED = "order received";
     public static final String ORDER_DISPATCHED = "order dispatched";
 
-    private Client client;
+    private Customer customer;
     private String orderStatus;
     private HashMap<SushiDish, Integer> dishAmounts;
 
-    public Order(Client client) {
-        this.client = client;
+    public Order(Customer customer) {
+        this.customer = customer;
+        customer.addOrder(this);
         orderStatus = ORDER_IN_PROGRESS;
         dishAmounts = new HashMap<>();
     }
 
     public HashMap<SushiDish, Integer> getDishAmounts() {
         return dishAmounts;
+    }
+
+    public String getOrderStatus() {
+        return orderStatus;
     }
 
     public Integer getTotalPrice() {
@@ -44,7 +49,17 @@ public class Order {
     }
 
     protected void removeDish(SushiDish dish) {
-        dishAmounts.remove(dish);
+        for (SushiDish d : dishAmounts.keySet()) {
+            if (d.equals(dish)) {
+                int smallerAmount = dishAmounts.get(dish) - 1;
+
+                if (smallerAmount > 0) {
+                    dishAmounts.put(dish, smallerAmount);
+                } else {
+                    dishAmounts.remove(dish);
+                }
+            }
+        }
     }
 
     protected void place() {
