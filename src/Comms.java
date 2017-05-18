@@ -9,17 +9,15 @@ public class Comms extends Thread {
     private int receiverPortNumber;     // Is businessPortNumber if this is a client application
     // Is last client application port number if this is the business application
 
-    public Comms(boolean businessApplication) {
+    public Comms(Application application) {
         try {
-            if (businessApplication) {
-                portNumber = businessPortNumber;
-                serverSocket = new ServerSocket(portNumber);
-                serverSocket.setSoTimeout(10000);
-            } else {
+            if (application instanceof ClientApplication) {     // Condition has to be tested
                 serverSocket = new ServerSocket(0);     // Let the server find a port number for the client application
                 portNumber = serverSocket.getLocalPort();    // And store it in this variable
-                serverSocket.setSoTimeout(10000);
                 receiverPortNumber = businessPortNumber;
+            } else {
+                portNumber = businessPortNumber;
+                serverSocket = new ServerSocket(portNumber);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -29,15 +27,13 @@ public class Comms extends Thread {
     public void run() {
         while (true) {
             receiveMessage();
-            /* TODO: Maybe think about a way to get the return value to the object that instantiated this class
-            Maybe pass "this" as a parameter for the constructor of this class. The boolean could be replaced with an if using instanceof
-            Both applications could have a method which would be called from here to give them the message. */
+            /* TODO: Create a method in Application (which is implemented by both applications) to be called from here when a message is received */
         }
     }
 
     public void sendMessage(Object msgObject) {
         try {
-            socket = new Socket("localhost", receiverPortNumber);   // Might have to move this in the constructor
+            socket = new Socket("localhost", receiverPortNumber);
 
             // Serialize Message
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
@@ -54,7 +50,7 @@ public class Comms extends Thread {
 
     public Object receiveMessage() {
         try {
-            socket = serverSocket.accept();       // This method waits until a client connects to the server on the given port or there is a timeout
+            socket = serverSocket.accept();       // This method waits until a client connects to the server on the given port
 
             // Deserialize Message
             ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
@@ -68,12 +64,8 @@ public class Comms extends Thread {
 
             return msg.getContent();
 
-        } catch (SocketTimeoutException e1) {
-            // Do nothing as it will loop through this method again.
-        } catch (IOException e2) {
-            e2.printStackTrace();
-        } catch (ClassNotFoundException e3) {
-            e3.printStackTrace();
+        } catch (ClassNotFoundException | IOException e) {
+            e.printStackTrace();
         }
 
         return null;

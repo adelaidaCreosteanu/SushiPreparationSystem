@@ -23,11 +23,8 @@ public class LogInPanel extends JPanel {
 
     public LogInPanel(ClientApplication clientApplication) {
         super();
-        this.clientApplication = clientApplication;
-        init();
-    }
 
-    private void init() {
+        this.clientApplication = clientApplication;
         this.setLayout(new GridBagLayout());
 
         postcodes = new ArrayList<>(10);
