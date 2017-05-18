@@ -19,20 +19,23 @@ public class ClientApplication extends JFrame implements Application {
     }
 
     public void init() {
-        this.setContentPane(new LogInPanel(this));
+        setContentPane(new LogInPanel(this));
 
         // JFrame settings
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(new Dimension(600, 600));
-        this.setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(new Dimension(600, 600));
+        setVisible(true);
     }
 
     public void register(String username, String password, String address, String postcode) throws Exception {
+        // Check username unique
         for (Client client : clients) {
-            if (username.equals(client.getUsername())) throw new Exception("Username already used!");
-
-            clients.add(new Client(username, password, address, postcode));
+            if (username.equals(client.getUsername())) throw new Exception("Username not unique!");
         }
+
+        Client client = new Client(username, password, address, postcode);
+        clients.add(client);
+        setContentPane(new ShoppingPanel(this, client));
     }
 
     public void logIn(String username, String password) throws Exception {

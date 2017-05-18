@@ -9,18 +9,24 @@ public class ShoppingPanel extends JPanel {
     private Comms comms;
     private HashMap<SushiDish, Integer> dishStock;
     private JPanel dishesPanel;
+    private JPanel basketPanel;
+    private Order order;
 
-    public ShoppingPanel(ClientApplication clientApplication) {
+    public ShoppingPanel(ClientApplication clientApplication, Client client) {
         super();
 
         this.clientApplication = clientApplication;
-        this.comms = clientApplication.getComms();
+        comms = clientApplication.getComms();
+        order = new Order(client);
 
-        setLayout(new BorderLayout());      // BorderLayout.EAST will be used for the shopping basket
+        setLayout(new BorderLayout());
         dishesPanel = new JPanel(new GridBagLayout());
+        basketPanel = new JPanel(new GridBagLayout());
         add(dishesPanel, BorderLayout.CENTER);
+        add(basketPanel, BorderLayout.EAST);
 
         displayAllDishes();
+        displayShoppingBasket();
     }
 
     private void displayAllDishes() {
@@ -69,7 +75,7 @@ public class ShoppingPanel extends JPanel {
         JButton addToBasket = new JButton("Add to basket");
         addToBasket.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Add to basket or increase amount
+                order.addDish(dish);
             }
         });
 
@@ -91,5 +97,83 @@ public class ShoppingPanel extends JPanel {
 
         constraints.gridy = GridBagConstraints.RELATIVE;
         dishesPanel.add(stock, constraints);
+    }
+
+    private void displayShoppingBasket() {
+        basketPanel.removeAll();
+        basketPanel.repaint();
+
+        for (SushiDish dish : order.getDishAmounts().keySet()) {
+            int amount = order.getDishAmounts().get(dish);
+            displayBasketDish(dish, amount);
+        }
+
+        displayBasketTotal();
+    }
+
+    private void displayBasketDish(SushiDish dish, Integer amount) {
+        GridBagConstraints constraints = new GridBagConstraints();
+
+        // NAME IN BOLD FONT
+        JLabel name = new JLabel(dish.getName());
+        Font f = name.getFont();
+        name.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+
+        constraints.gridx = 0;
+        constraints.gridy = GridBagConstraints.RELATIVE;
+        constraints.insets = new Insets(0, 0, 4, 10);
+        constraints.anchor = GridBagConstraints.LINE_START;
+        basketPanel.add(name, constraints);
+
+        // AMOUNT
+        JLabel amountLbl = new JLabel("x " + String.valueOf(amount));
+
+        constraints.gridx = 1;
+        basketPanel.add(amountLbl, constraints);
+
+        // PRICE
+        JLabel price = new JLabel(String.valueOf(dish.getPrice() * amount) + "£");
+
+        constraints.gridx = 2;
+        constraints.insets = new Insets(0, 20, 4, 0);
+        constraints.anchor = GridBagConstraints.LINE_END;
+        basketPanel.add(price, constraints);
+    }
+
+    private void displayBasketTotal() {
+        GridBagConstraints constraints = new GridBagConstraints();
+
+        // TOTAL IN BOLD
+        JLabel totalLbl = new JLabel("TOTAL");
+        Font f = totalLbl.getFont();
+        totalLbl.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+
+        constraints.gridx = 0;
+        constraints.gridy = GridBagConstraints.RELATIVE;
+        constraints.insets = new Insets(0, 0, 4, 20);
+        constraints.anchor = GridBagConstraints.LINE_START;
+        basketPanel.add(totalLbl, constraints);
+
+        // PRICE LABEL
+        JLabel price = new JLabel(String.valueOf(order.getTotalPrice()) + "£");
+
+        constraints.gridx = 2;
+        constraints.insets = new Insets(0, 20, 4, 0);
+        constraints.anchor = GridBagConstraints.LINE_END;
+        basketPanel.add(price, constraints);
+
+        // PLACE ORDER BUTTON
+        JButton placeOrder = new JButton("Place order");
+        placeOrder.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                order.place();                                                // TODO: Place order
+            }
+        });
+
+        constraints.gridx = 0;
+        constraints.gridy = GridBagConstraints.RELATIVE;
+        constraints.insets = new Insets(0, 0, 0, 0);
+        constraints.anchor = GridBagConstraints.LAST_LINE_START;
+        basketPanel.add(placeOrder, constraints);
     }
 }
