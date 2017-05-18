@@ -220,6 +220,7 @@ public class LogInPanel extends JPanel {
             setRegisterView();
         }
 
+        revalidate();
         repaint();      // necessary for removeAll to work
     }
 

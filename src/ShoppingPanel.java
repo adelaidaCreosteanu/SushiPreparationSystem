@@ -120,7 +120,6 @@ public class ShoppingPanel extends JPanel {
 
     private void displayBasketPanel() {
         basketPanel.removeAll();
-        basketPanel.repaint();
 
         for (SushiDish dish : order.getDishAmounts().keySet()) {
             int amount = order.getDishAmounts().get(dish);
@@ -128,6 +127,9 @@ public class ShoppingPanel extends JPanel {
         }
 
         displayBasketTotal();
+
+        basketPanel.revalidate();
+        basketPanel.repaint();
     }
 
     private void displayBasketDish(SushiDish dish, Integer amount) {
@@ -214,6 +216,7 @@ public class ShoppingPanel extends JPanel {
         public void run() {
             while (true) {
                 try {
+                    dishesPanel.removeAll();
                     comms.sendMessage(Message.REQUEST_DISHSTOCK_HASHMAP);
                     dishStock = (HashMap<SushiDish, Integer>) comms.receiveMessage();
 
@@ -221,9 +224,10 @@ public class ShoppingPanel extends JPanel {
                         displayDish(dish);
                     }
 
-                    Thread.sleep(2000);     // Wait 2s and refresh page
-                    dishesPanel.removeAll();
+                    dishesPanel.revalidate();
                     dishesPanel.repaint();
+
+                    Thread.sleep(2000);     // Wait 2s and refresh page
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

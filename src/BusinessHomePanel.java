@@ -10,7 +10,7 @@ public class BusinessHomePanel extends JPanel {
 
         this.businessApplication = businessApplication;
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setAlignmentX(CENTER_ALIGNMENT);
+        setAlignmentY(CENTER_ALIGNMENT);
 
         displayButtons();
     }

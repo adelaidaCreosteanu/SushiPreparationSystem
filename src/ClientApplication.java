@@ -17,7 +17,7 @@ public class ClientApplication extends Application {
         setContentPane(new LogInPanel(this));
 
         // JFrame settings
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(new Dimension(600, 600));
         setVisible(true);
     }

@@ -26,6 +26,8 @@ public class StockPanel extends JPanel {
         setLayout(new BorderLayout());
         add(content, BorderLayout.CENTER);
         addHeader();
+        System.out.println("works in stockPanel");
+
         new DisplayThread().run();
     }
 
@@ -81,12 +83,17 @@ public class StockPanel extends JPanel {
         constraints.gridx = 2;
         constraints.insets = new Insets(0, 5, 20, 0);
         panel.add(saveRestockLvl, constraints);
+
+        System.out.println("works in displayFood inside stockPanel");
     }
 
     private class DisplayThread extends Thread {
         public void run() {
-            while (true) {
+//            while (true) {                // PROBLEM!!!
                 try {
+                    ingredientPanel.removeAll();
+                    dishesPanel.removeAll();
+
                     ingredientStock = businessApplication.getIngredients();
                     dishStock = businessApplication.getDishes();
 
@@ -98,18 +105,16 @@ public class StockPanel extends JPanel {
                         displayFood(d, dishesPanel, dishStock.get(d));
                     }
 
-                    Thread.sleep(1000);     // Wait 1s and refresh
-
-                    ingredientPanel.removeAll();
+                    ingredientPanel.revalidate();
                     ingredientPanel.repaint();
-                    dishesPanel.removeAll();
+                    dishesPanel.revalidate();
                     dishesPanel.repaint();
+
+                    Thread.sleep(1000);     // Wait 1s and refresh
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-            }
+//            }
         }
     }
-
-
 }
