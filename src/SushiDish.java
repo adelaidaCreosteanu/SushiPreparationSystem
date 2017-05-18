@@ -1,18 +1,15 @@
 import java.util.Map;
 import java.util.TreeMap;
 
-public class SushiDish {
-    private String name;
+public class SushiDish extends Food {
     private String description;
     private int price;
-    private int restockLevel;
     private Map<Ingredient, Integer> ingredientAmounts;
 
     public SushiDish(String name, String description, int price, int restockLevel) {
-        this.name = name;
+        super(name, restockLevel);
         this.description = description;
         this.price = price;
-        this.restockLevel = restockLevel;
         ingredientAmounts = new TreeMap<>();           // Chose TreeMap so the ingredientAmounts are neatly sorted alphabetically
     }
 
@@ -28,15 +25,7 @@ public class SushiDish {
         return description;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public int getPrice() {
         return price;
-    }
-
-    public int getRestockLevel() {
-        return restockLevel;
     }
 }

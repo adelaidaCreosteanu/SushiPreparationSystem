@@ -35,7 +35,7 @@ public class ShoppingPanel extends JPanel {
         add(basketPanel, BorderLayout.EAST);
 
         displayHeaderPanel();
-        displayDishesPanel();
+        new DisplayDishes().run();      // Thread because stock levels need to be refreshed
         displayBasketPanel();
     }
 
@@ -63,26 +63,6 @@ public class ShoppingPanel extends JPanel {
         constraints.insets = new Insets(0, 50, ROW_SPACE, 0);
         constraints.anchor = GridBagConstraints.LAST_LINE_END;
         headerPanel.add(viewOrders, constraints);
-    }
-
-    private void displayDishesPanel() {
-        while (true) {
-            try {
-                comms.sendMessage(Message.REQUEST_DISHSTOCK_HASHMAP);
-                dishStock = (HashMap<SushiDish, Integer>) comms.receiveMessage();
-
-                for (SushiDish dish : dishStock.keySet()) {
-                    displayDish(dish);
-                }
-
-                Thread.sleep(2000);     // Wait 2s and refresh page
-
-                dishesPanel.removeAll();
-                dishesPanel.repaint();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     private void displayDish(SushiDish dish) {
@@ -228,5 +208,26 @@ public class ShoppingPanel extends JPanel {
         constraints.insets = new Insets(0, 0, 0, 0);
         constraints.anchor = GridBagConstraints.LAST_LINE_START;
         basketPanel.add(placeOrder, constraints);
+    }
+
+    private class DisplayDishes extends Thread {
+        public void run() {
+            while (true) {
+                try {
+                    comms.sendMessage(Message.REQUEST_DISHSTOCK_HASHMAP);
+                    dishStock = (HashMap<SushiDish, Integer>) comms.receiveMessage();
+
+                    for (SushiDish dish : dishStock.keySet()) {
+                        displayDish(dish);
+                    }
+
+                    Thread.sleep(2000);     // Wait 2s and refresh page
+                    dishesPanel.removeAll();
+                    dishesPanel.repaint();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }

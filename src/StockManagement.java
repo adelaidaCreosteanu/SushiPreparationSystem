@@ -61,11 +61,15 @@ public final class StockManagement {
         updateDishStock(sushiDish, dishStock.get(sushiDish) - amount);
     }
 
-    public synchronized Hashtable getIngredients() {
-        return ingredientStock;
+    public Hashtable<Ingredient, Integer> getIngredients() {
+        synchronized (ingredientStock) {
+            return ingredientStock;
+        }
     }
 
-    public synchronized Hashtable getDishes() {
-        return dishStock;
+    public Hashtable<SushiDish, Integer> getDishes() {
+        synchronized (dishStock) {
+            return dishStock;
+        }
     }
 }

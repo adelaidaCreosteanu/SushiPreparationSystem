@@ -1,14 +1,11 @@
 // This class implements Comparable so the list of ingredients can be sorted alphabetically inside the TreeMap of a SushiDish
-public class Ingredient implements Comparable<Ingredient> {
-    private String name;
+public class Ingredient extends Food implements Comparable<Ingredient> {
     private String unit;
     private Supplier supplier;
-    private int restockLevel;
 
     public Ingredient(String name, String unit, Supplier supplier, int restockLevel) {
-        this.name = name;
+        super(name, restockLevel);
         this.supplier = supplier;
-        this.restockLevel = restockLevel;
 
         switch (unit) {
             case Measurement.GRAM:
@@ -35,9 +32,5 @@ public class Ingredient implements Comparable<Ingredient> {
 
     public Supplier getSupplier() {
         return supplier;
-    }
-
-    public int getRestockLevel() {
-        return restockLevel;
     }
 }

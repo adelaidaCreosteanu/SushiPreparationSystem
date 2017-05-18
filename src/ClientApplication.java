@@ -2,9 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class ClientApplication extends JFrame implements Application {
+public class ClientApplication extends Application {
     private ArrayList<Customer> customers;
-    private Comms comms;
 
     public ClientApplication() {
         super("Customer Application");
@@ -14,15 +13,11 @@ public class ClientApplication extends JFrame implements Application {
         init();
     }
 
-    public Comms getComms() {
-        return comms;
-    }
-
     public void init() {
         setContentPane(new LogInPanel(this));
 
         // JFrame settings
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(new Dimension(600, 600));
         setVisible(true);
     }
