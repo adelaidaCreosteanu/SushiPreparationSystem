@@ -25,66 +25,55 @@ public class StockPanel extends JPanel {
 
         setLayout(new BorderLayout());
         add(content, BorderLayout.CENTER);
-        addHeader();
-        System.out.println("works in stockPanel");
 
         new DisplayThread().run();
     }
 
-    private void addHeader() {
-        JButton home = new JButton("Home");
-        home.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                businessApplication.showHomePanel();
-            }
-        });
-
-        Box header = new Box(BoxLayout.X_AXIS);
-        header.add(home);
-        add(header, BorderLayout.NORTH);
-    }
 
     private void displayFood(Food food, JPanel panel, int stock) {
         GridBagConstraints constraints = new GridBagConstraints();
+        Box nameBox = new Box(BoxLayout.X_AXIS);
+        Box restockBox = new Box(BoxLayout.X_AXIS);
 
-        // INGREDIENT NAME
+        // INGREDIENT NAME AND CURRENT STOCK
         JLabel name = new JLabel(food.getName() + ":");
-        constraints.gridx = 0;
-        constraints.gridy = GridBagConstraints.RELATIVE;
-        constraints.insets = new Insets(0, 0, 4, 10);
-        constraints.anchor = GridBagConstraints.LINE_START;
-        panel.add(name, constraints);
-
-        // CURRENT STOCK NEXT TO NAME
         JLabel stockLbl = new JLabel(String.valueOf(stock));
-        constraints.gridx = 1;
-        panel.add(stockLbl, constraints);
 
-        // RESTOCK LEVEL LABEL ON NEXT LINE
-        JLabel restockLbl = new JLabel("Restock level:");
+        nameBox.setAlignmentX(LEFT_ALIGNMENT);
+        nameBox.add(name);
+        nameBox.add(Box.createHorizontalStrut(5));
+        nameBox.add(stockLbl);
+
         constraints.gridx = 0;
         constraints.gridy = GridBagConstraints.RELATIVE;
-        constraints.insets = new Insets(0, 0, 20, 3);
-        panel.add(restockLbl, constraints);
+        constraints.insets = new Insets(0, 0, 3, 10);
+        constraints.anchor = GridBagConstraints.LINE_START;
+        panel.add(nameBox, constraints);
 
-        // RESTOCK SPINNER
+
+        // RESTOCK LEVEL WITH SAVE BUTTON
+        JLabel restockLbl = new JLabel("Restock level:");
+
         JSpinner restockSpinner = new JSpinner(new SpinnerNumberModel(food.getRestockLevel(), 0, 100, 1));
-        restockSpinner.setMinimumSize(new Dimension(50, 20));
-        constraints.gridx = 1;
-        panel.add(restockSpinner, constraints);
+        restockSpinner.setMinimumSize(new Dimension(40, 20));
 
-        // SAVE BUTTON
         JButton saveRestockLvl = new JButton("Save");
         saveRestockLvl.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 food.setRestockLevel((Integer) restockSpinner.getValue());
             }
         });
-        constraints.gridx = 2;
-        constraints.insets = new Insets(0, 5, 20, 0);
-        panel.add(saveRestockLvl, constraints);
 
-        System.out.println("works in displayFood inside stockPanel");
+        restockBox.setAlignmentX(LEFT_ALIGNMENT);
+        restockBox.add(restockLbl);
+        restockBox.add(Box.createHorizontalStrut(5));
+        restockBox.add(restockSpinner);
+        restockBox.add(Box.createHorizontalStrut(7));
+        restockBox.add(saveRestockLvl);
+
+        constraints.gridy = GridBagConstraints.RELATIVE;
+        constraints.insets = new Insets(0, 0, 20, 10);
+        panel.add(restockBox, constraints);
     }
 
     private class DisplayThread extends Thread {
