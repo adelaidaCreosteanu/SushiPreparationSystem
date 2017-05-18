@@ -18,14 +18,14 @@ public class LogInPanel extends JPanel {
     private JButton changeViewBtn;
 
     // Constants used to change views
-    private static final String REGISTER = "register";
-    private static final String LOGIN = "login";
+    private static final int REGISTER = 0;
+    private static final int LOGIN = 1;
 
     public LogInPanel(ClientApplication clientApplication) {
         super();
 
         this.clientApplication = clientApplication;
-        this.setLayout(new GridBagLayout());
+        setLayout(new GridBagLayout());
 
         postcodes = new ArrayList<>(10);
         for (int i = 1; i < 17; i++) {
@@ -46,54 +46,54 @@ public class LogInPanel extends JPanel {
         Insets genericInsets = new Insets(2, 10, 2, 10);
         genericConstraints.insets = genericInsets;
         genericConstraints.anchor = GridBagConstraints.LINE_END;
-        this.add(usernameLbl, genericConstraints);
+        add(usernameLbl, genericConstraints);
 
         usernameFld = new JTextField(100);
         usernameFld.setMinimumSize(new Dimension(100, 20));
         genericConstraints.gridx = 1;
-        this.add(usernameFld, genericConstraints);
+        add(usernameFld, genericConstraints);
 
         // PASSWORD
         JLabel passwordLbl = new JLabel("Password");
         genericConstraints.gridx = 0;
         genericConstraints.gridy = 1;
-        this.add(passwordLbl, genericConstraints);
+        add(passwordLbl, genericConstraints);
 
         passwordFld = new JPasswordField(100);
         passwordFld.setMinimumSize(new Dimension(100, 20));
         genericConstraints.gridx = 1;
-        this.add(passwordFld, genericConstraints);
+        add(passwordFld, genericConstraints);
 
         // ADDRESS
         JLabel addressLbl = new JLabel("Address");
         genericConstraints.gridx = 0;
         genericConstraints.gridy = 2;
-        this.add(addressLbl, genericConstraints);
+        add(addressLbl, genericConstraints);
 
         addressFld1 = new JTextField(100);
         genericConstraints.gridx = 1;
         genericConstraints.insets = new Insets(2, 10, 0, 10);   // Tighter fit
         addressFld1.setMinimumSize(new Dimension(100, 20));
-        this.add(addressFld1, genericConstraints);
+        add(addressFld1, genericConstraints);
 
         addressFld2 = new JTextField(100);
         genericConstraints.gridy = 3;
         genericConstraints.insets = new Insets(0, 10, 2, 10);   // Tighter fit
         addressFld2.setMinimumSize(new Dimension(100, 20));
-        this.add(addressFld2, genericConstraints);
+        add(addressFld2, genericConstraints);
 
         // POSTCODE
         JLabel postcodeLbl = new JLabel("Postcode");
         genericConstraints.gridx = 0;
         genericConstraints.gridy = 4;
         genericConstraints.insets = genericInsets;  // Reset insets
-        this.add(postcodeLbl, genericConstraints);
+        add(postcodeLbl, genericConstraints);
 
         postcodeSpinner = new JSpinner(new SpinnerListModel(postcodes));
         postcodeSpinner.setMinimumSize(new Dimension(60, 20));
         genericConstraints.gridx = 1;
         genericConstraints.anchor = GridBagConstraints.LINE_START;
-        this.add(postcodeSpinner, genericConstraints);
+        add(postcodeSpinner, genericConstraints);
 
         setButtons();
     }
@@ -105,26 +105,25 @@ public class LogInPanel extends JPanel {
         JLabel usernameLbl = new JLabel("Username");
         genericConstraints.gridx = 0;
         genericConstraints.gridy = 0;
-        Insets genericInsets = new Insets(2, 10, 2, 10);
-        genericConstraints.insets = genericInsets;
+        genericConstraints.insets = new Insets(2, 10, 2, 10);
         genericConstraints.anchor = GridBagConstraints.LINE_END;
-        this.add(usernameLbl, genericConstraints);
+        add(usernameLbl, genericConstraints);
 
         usernameFld = new JTextField(100);
         usernameFld.setMinimumSize(new Dimension(100, 20));
         genericConstraints.gridx = 1;
-        this.add(usernameFld, genericConstraints);
+        add(usernameFld, genericConstraints);
 
         // PASSWORD
         JLabel passwordLbl = new JLabel("Password");
         genericConstraints.gridx = 0;
         genericConstraints.gridy = 1;
-        this.add(passwordLbl, genericConstraints);
+        add(passwordLbl, genericConstraints);
 
         passwordFld = new JPasswordField(100);
         passwordFld.setMinimumSize(new Dimension(100, 20));
         genericConstraints.gridx = 1;
-        this.add(passwordFld, genericConstraints);
+        add(passwordFld, genericConstraints);
 
         setButtons();
     }
@@ -137,12 +136,12 @@ public class LogInPanel extends JPanel {
         buttonConstraints.gridy = 5;
         buttonConstraints.insets = new Insets(30, 0, 0, 0);
         buttonConstraints.anchor = GridBagConstraints.LAST_LINE_END;
-        this.add(enterBtn, buttonConstraints);
+        add(enterBtn, buttonConstraints);
 
         changeViewBtn = new JButton();
         buttonConstraints.gridy = 6;
         buttonConstraints.insets = new Insets(5, 0, 0, 0);
-        this.add(changeViewBtn, buttonConstraints);
+        add(changeViewBtn, buttonConstraints);
     }
 
     private void setRegisterView() {
@@ -210,13 +209,13 @@ public class LogInPanel extends JPanel {
         });
     }
 
-    private void switchView(String option) {
+    private void switchView(int option) {
         removeAll();
 
-        if (option.equals(LOGIN)) {
+        if (option == LOGIN) {
             setLoginForm();
             setLoginView();
-        } else if (option.equals(REGISTER)) {
+        } else if (option == REGISTER) {
             setRegisterForm();
             setRegisterView();
         }
@@ -230,7 +229,7 @@ public class LogInPanel extends JPanel {
 
         constraints.gridx = 0;
         constraints.gridy = 5;
-        this.add(exception, constraints);
+        add(exception, constraints);
         // TODO: doesn't work correctly?
     }
 }

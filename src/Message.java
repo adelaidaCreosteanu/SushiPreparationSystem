@@ -1,7 +1,7 @@
 import java.io.Serializable;
 
 public class Message implements Serializable {
-    public static final String GET_DISHES = "please give me dishes";
+    public static final int GET_DISHSTOCK_HASHMAP = 0;
     private Object content;
     private int senderPortNumber;
 
