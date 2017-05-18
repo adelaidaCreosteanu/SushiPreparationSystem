@@ -20,19 +20,12 @@ public class SushiDish {
         ingredientAmounts.put(ingredient, amount);
     }
 
-    public String getRecipe() {
-        StringBuffer recipeBuffer = new StringBuffer();
-        recipeBuffer.append(this.name + " - " + this.description + "\n");
-
-        for (Ingredient ingredient : ingredientAmounts.keySet()) {
-            recipeBuffer.append(ingredient.getName() + ": " + ingredientAmounts.get(ingredient) + "\n");
-        }
-
-        return recipeBuffer.toString();
-    }
-
     public synchronized Map getIngredients() {
         return ingredientAmounts;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public String getName() {
