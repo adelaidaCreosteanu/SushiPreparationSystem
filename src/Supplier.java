@@ -1,4 +1,6 @@
-public class Supplier {
+import java.io.Serializable;
+
+public class Supplier implements Serializable {
     private String name;
     private int distance;
 

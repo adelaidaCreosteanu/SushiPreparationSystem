@@ -235,6 +235,18 @@ public class DishManagerPanel extends JPanel {
         constraints.insets = new Insets(10, 0, 0, 10);
         constraints.anchor = GridBagConstraints.LAST_LINE_START;
         newDishPanel.add(addButton, constraints);
+
+        //  REFRESH BUTTON
+        JButton refreshButton = new JButton("Refresh");
+        refreshButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                displayAllDishes();
+                displayNewDishWizard();
+            }
+        });
+
+        constraints.gridy = GridBagConstraints.RELATIVE;
+        newDishPanel.add(refreshButton, constraints);
     }
 
     private Box getIngredientBox(Ingredient ingredient) {

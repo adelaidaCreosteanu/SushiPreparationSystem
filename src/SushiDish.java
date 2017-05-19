@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class SushiDish {
+public class SushiDish implements Serializable {
     private String name;
     private String description;
     private int price;

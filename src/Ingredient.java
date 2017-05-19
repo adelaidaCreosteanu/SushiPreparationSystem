@@ -1,5 +1,7 @@
+import java.io.Serializable;
+
 // This class implements Comparable so the list of ingredients can be sorted alphabetically inside the TreeMap of a SushiDish
-public class Ingredient implements Comparable<Ingredient> {
+public class Ingredient implements Comparable<Ingredient>, Serializable {
     private String name;
     private String unit;
     private Supplier supplier;

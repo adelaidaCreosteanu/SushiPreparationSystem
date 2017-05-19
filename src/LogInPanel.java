@@ -73,13 +73,11 @@ public class LogInPanel extends JPanel {
         addressFld1 = new JTextField(100);
         genericConstraints.gridx = 1;
         genericConstraints.insets = new Insets(2, 10, 0, 10);   // Tighter fit
-        addressFld1.setMinimumSize(new Dimension(50, 20));
         add(addressFld1, genericConstraints);
 
         addressFld2 = new JTextField(100);
         genericConstraints.gridy = 3;
         genericConstraints.insets = new Insets(0, 10, 2, 10);   // Tighter fit
-        addressFld2.setMinimumSize(new Dimension(50, 20));
         add(addressFld2, genericConstraints);
 
         // POSTCODE

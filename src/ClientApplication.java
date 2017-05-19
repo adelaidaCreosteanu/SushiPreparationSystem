@@ -33,6 +33,7 @@ public class ClientApplication extends Application {    // extends JFrame
     }
 
     public void register(String username, String password, String address, String postcode) throws Exception {
+        getUpdatedCustomers();
         // Check username unique
         for (Customer customer : customers) {
             if (username.equals(customer.getUsername())) throw new Exception("Username not unique!");
@@ -40,7 +41,6 @@ public class ClientApplication extends Application {    // extends JFrame
 
         Customer customer = new Customer(username, password, address, postcode);
         comms.sendMessage(Message.REQUEST_REGISTER_CUSTOMER, customer);
-        getUpdatedCustomers();
 
         contentPane.removeAll();
         contentPane.add(new ShoppingPanel(this, customer));
@@ -49,6 +49,7 @@ public class ClientApplication extends Application {    // extends JFrame
     }
 
     public void logIn(String username, String password) throws Exception {
+        getUpdatedCustomers();
         boolean found = false;
 
         for (Customer customer : customers) {
