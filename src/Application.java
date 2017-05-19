@@ -10,4 +10,11 @@ public class Application extends JFrame {
     public Comms getComms() {
         return comms;
     }
+
+    // Called by Comms when a message is received. For BusinessApplication only
+    public void receivedMessage(int request) {
+    }
+
+    public void receivedMessage(int request, Object content) {
+    }
 }

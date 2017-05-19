@@ -2,6 +2,8 @@ import java.io.*;
 import java.net.*;
 
 public class Comms extends Thread {
+    private Application application;
+
     private static final int businessPortNumber = 1111;
     private int portNumber;             // Is businessPortNumber if this is the business application
     private ServerSocket serverSocket;
@@ -10,8 +12,10 @@ public class Comms extends Thread {
     // Is last client application port number if this is the business application
 
     public Comms(Application application) {
+        this.application = application;
+
         try {
-            if (application instanceof ClientApplication) {     // Condition has to be tested
+            if (application instanceof ClientApplication) {
                 serverSocket = new ServerSocket(0);     // Let the server find a port number for the client application
                 portNumber = serverSocket.getLocalPort();    // And store it in this variable
                 receiverPortNumber = businessPortNumber;
@@ -26,8 +30,7 @@ public class Comms extends Thread {
 
     public void run() {
         while (true) {
-            receiveMessage();
-            /* TODO: Create a method in Application (which is implemented by both applications) to be called from here when a message is received */
+            listen();
         }
     }
 
@@ -52,7 +55,7 @@ public class Comms extends Thread {
         }
     }
 
-    public Object receiveMessage() {
+    public Object receiveMessage() {    // Returns only the content of the message. Assumes the caller of this method know the request/purpose of communication
         try {
             socket = serverSocket.accept();       // This method waits until a client connects to the server on the given port
 
@@ -66,14 +69,36 @@ public class Comms extends Thread {
             // Clean up
             objectInputStream.close();
 
-            // TODO: use msg.getRequest()
-
             return msg.getContent();
-
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }
 
         return null;
+    }
+
+    public void listen() {
+        try {
+            socket = serverSocket.accept();        // This method waits until a client connects to the server on the given port
+
+            // Deserialize Message
+            ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
+            Message msg = (Message) objectInputStream.readObject();
+
+            // Reset receiver to the sender of this message
+            receiverPortNumber = msg.getSender();
+
+            // Clean up
+            objectInputStream.close();
+
+            if (msg.getContent() == null) {
+                application.receivedMessage(msg.getRequest());
+            } else {
+                application.receivedMessage(msg.getRequest(), msg.getContent());
+            }
+
+        } catch (ClassNotFoundException | IOException e) {
+            e.printStackTrace();
+        }
     }
 }

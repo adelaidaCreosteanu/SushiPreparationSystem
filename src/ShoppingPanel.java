@@ -35,7 +35,7 @@ public class ShoppingPanel extends JPanel {
         add(basketPanel, BorderLayout.EAST);
 
         displayHeaderPanel();
-        new DisplayDishes().run();      // Thread because stock levels need to be refreshed
+        new DisplayDishes().start();      // Thread because stock levels need to be refreshed
         displayBasketPanel();
     }
 
@@ -201,7 +201,8 @@ public class ShoppingPanel extends JPanel {
         JButton placeOrder = new JButton("Place order");
         placeOrder.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                order.place();                                                // TODO: Place order
+                order.place();
+                comms.sendMessage(Message.REQUEST_PLACE_ORDER, order);
             }
         });
 
@@ -212,7 +213,7 @@ public class ShoppingPanel extends JPanel {
         basketPanel.add(placeOrder, constraints);
     }
 
-    private class DisplayDishes extends Thread {        // Almost certainly won't work
+    private class DisplayDishes extends Thread {
         public void run() {
             while (true) {
                 try {

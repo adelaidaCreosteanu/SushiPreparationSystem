@@ -13,11 +13,10 @@ public class DishManagerPanel extends JPanel {
     private JPanel dishPanel;
     private JPanel newDishPanel;
 
-
-    public DishManagerPanel(StockManagement stockManagement) {
+    public DishManagerPanel(BusinessApplication businessApplication) {
         super();
 
-        this.stockManagement = stockManagement;
+        this.stockManagement = businessApplication.getStockManagement();
         dishPanel = new JPanel(new GridBagLayout());
         newDishPanel = new JPanel(new GridBagLayout());
 
@@ -263,13 +262,4 @@ public class DishManagerPanel extends JPanel {
 
         return box;
     }
-
-
-
-
-
-
-
-
-
 }

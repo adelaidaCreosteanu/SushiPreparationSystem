@@ -6,6 +6,7 @@ public class BusinessApplication extends Application {
     private StockManagement stockManagement;
     private JTabbedPane tabbedPane;
 
+    private ArrayList<Customer> customers;
     private ArrayList<Supplier> suppliers;
     private ArrayList<Order> orders;
     private ArrayList<KitchenStaff> staffArrayList;
@@ -15,11 +16,11 @@ public class BusinessApplication extends Application {
 
         this.stockManagement = stockManagement;
         comms = new Comms(this);
+        comms.start();
         tabbedPane = new JTabbedPane();
         setContentPane(tabbedPane);
 
         suppliers = new ArrayList<>();
-        suppliers.add(new Supplier("BestSupplier", 10));        // TODO: REMOVE
         orders = new ArrayList<>();
         staffArrayList = new ArrayList<>();
 
@@ -28,7 +29,7 @@ public class BusinessApplication extends Application {
 
     private void init() {
         tabbedPane.addTab("Ingredients", new IngredientManagerPanel(this));
-        tabbedPane.addTab("Dishes", new DishManagerPanel(stockManagement));
+        tabbedPane.addTab("Dishes", new DishManagerPanel(this));
         tabbedPane.addTab("Suppliers", new SupplierManagerPanel(this));
         tabbedPane.addTab("Orders", new OrderManagerPanel(this));
         tabbedPane.addTab("Kitchen staff", new KitchenStaffManagerPanel(this));
@@ -42,6 +43,10 @@ public class BusinessApplication extends Application {
 
     public StockManagement getStockManagement() {
         return stockManagement;
+    }
+
+    public ArrayList<Customer> getCustomers() {
+        return customers;
     }
 
     public ArrayList<Supplier> getSuppliers() {
