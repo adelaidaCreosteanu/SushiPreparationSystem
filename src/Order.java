@@ -2,18 +2,18 @@ import java.util.HashMap;
 
 public class Order {
     // Order status constants:
-    public static final String ORDER_IN_PROGRESS = "order in progress";
-    public static final String ORDER_RECEIVED = "order received";
-    public static final String ORDER_DISPATCHED = "order dispatched";
+    public static final String ORDER_IN_PROGRESS = "in progress";
+    public static final String ORDER_RECEIVED = "received";
+    public static final String ORDER_DISPATCHED = "dispatched";
 
     private Customer customer;
-    private String orderStatus;
+    private String status;
     private HashMap<SushiDish, Integer> dishAmounts;
 
     public Order(Customer customer) {
         this.customer = customer;
         customer.addOrder(this);
-        orderStatus = ORDER_IN_PROGRESS;
+        status = ORDER_IN_PROGRESS;
         dishAmounts = new HashMap<>();
     }
 
@@ -21,8 +21,21 @@ public class Order {
         return dishAmounts;
     }
 
-    public String getOrderStatus() {
-        return orderStatus;
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Customer getCustomer() {
+
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public Integer getTotalPrice() {
@@ -63,10 +76,10 @@ public class Order {
     }
 
     protected void place() {
-        orderStatus = ORDER_RECEIVED;
+        status = ORDER_RECEIVED;
     }
 
     protected void dispatchOrder() {
-        orderStatus = ORDER_DISPATCHED;
+        status = ORDER_DISPATCHED;
     }
 }

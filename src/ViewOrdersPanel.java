@@ -43,7 +43,7 @@ public class ViewOrdersPanel extends JPanel {
         add(price, constraints);
 
         // STATUS
-        JLabel status = new JLabel("Status: " + order.getOrderStatus());
+        JLabel status = new JLabel("Status: " + order.getStatus());
 
         constraints.gridx = 0;
         constraints.gridy = GridBagConstraints.RELATIVE;

@@ -20,6 +20,8 @@ public class BusinessApplication extends Application {
 
         suppliers = new ArrayList<>();
         suppliers.add(new Supplier("BestSupplier", 10));
+        orders = new ArrayList<>();
+        staff = new ArrayList<>();
 
         init();
     }
@@ -72,5 +74,13 @@ public class BusinessApplication extends Application {
         if (removable) {
             suppliers.remove(supplier);
         }
+    }
+
+    public ArrayList<Order> getOrders() {
+        return orders;
+    }
+
+    public void removeOrder(Order order) {
+        orders.remove(order);
     }
 }
