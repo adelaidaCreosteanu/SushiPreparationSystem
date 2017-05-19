@@ -3,9 +3,12 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class BusinessApplication extends Application {
-    private ArrayList<Supplier> suppliers;
     private StockManagement stockManagement;
     private JTabbedPane tabbedPane;
+
+    private ArrayList<Supplier> suppliers;
+    private ArrayList<Order> orders;
+    private ArrayList<KitchenStaff> staff;
 
     public BusinessApplication(StockManagement stockManagement) {
         super("Business Application");
@@ -24,8 +27,8 @@ public class BusinessApplication extends Application {
     private void init() {
         tabbedPane.addTab("Ingredients", new IngredientManagerPanel(this));
         tabbedPane.addTab("Dishes", new DishManagerPanel(stockManagement));
-//        tabbedPane.addTab("Suppliers", new SupplierManagerPanel(this));
-//        tabbedPane.addTab("Orders", new OrderManagerPanel(this));
+        tabbedPane.addTab("Suppliers", new SupplierManagerPanel(this));
+        tabbedPane.addTab("Orders", new OrderManagerPanel(this));
 //        tabbedPane.addTab("Kitchen staff", new KitchenStaffManagerPanel(this));
 //        tabbedPane.addTab("Drones", new DroneManagerPanel(this));
 
@@ -51,5 +54,23 @@ public class BusinessApplication extends Application {
         }
 
         return null;
+    }
+
+    public void addSupplier(Supplier supplier) {
+        suppliers.add(supplier);
+    }
+
+    public void removeSupplier(Supplier supplier) {
+        boolean removable = true;
+
+        for (Ingredient i : stockManagement.getIngredients().keySet()) {
+            if (i.getSupplier().equals(supplier)) {
+                removable = false;
+            }
+        }
+
+        if (removable) {
+            suppliers.remove(supplier);
+        }
     }
 }

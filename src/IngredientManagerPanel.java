@@ -237,6 +237,7 @@ public class IngredientManagerPanel extends JPanel {
                 newIngredient.setRestockLevel((Integer) restockSpinner.getValue());
                 newIngredient.setSupplier(businessApplication.getSupplierByName((String) supplierSpinner.getValue()));
 
+                stockManagement.addNewIngredient(newIngredient);
                 displayAllIngredients();
                 displayNewIngredientWizard();
             }
