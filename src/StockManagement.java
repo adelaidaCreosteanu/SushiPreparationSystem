@@ -1,6 +1,6 @@
+import java.util.ArrayList;
 import java.util.Hashtable;
-
-// TODO: make this a singleton pattern?
+import java.util.Map;
 
 public final class StockManagement {
     private Hashtable<Ingredient, Integer> ingredientStock;     // Ingredients with current stock levels
@@ -16,6 +16,21 @@ public final class StockManagement {
             ingredientStock.put(ingredient, 0);
         }
     }
+
+    public void removeIngredient(Ingredient ingredient) {
+        boolean removable = true;
+
+        for (SushiDish s : dishStock.keySet()) {
+            for (Object i : s.getIngredients().keySet()) {
+                removable = false;
+            }
+        }
+
+        if (removable) {
+            ingredientStock.remove(ingredient);
+        }
+    }
+
 
     // Used by restockIngredient and useIngredient. Checks stock remains positive integer
     private void updateIngredientStock(Ingredient ingredient, Integer stock) throws Exception {
@@ -42,7 +57,7 @@ public final class StockManagement {
         }
     }
 
-    protected void removeDish(SushiDish dish) {
+    public void removeDish(SushiDish dish) {
         synchronized (dishStock) {
             dishStock.remove(dish);
         }

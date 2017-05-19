@@ -1,8 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
-import java.util.Hashtable;
+import java.util.ArrayList;
 
 public class BusinessApplication extends Application {
+    private ArrayList<Supplier> suppliers;
     private StockManagement stockManagement;
     private JTabbedPane tabbedPane;
 
@@ -14,13 +15,16 @@ public class BusinessApplication extends Application {
         tabbedPane = new JTabbedPane();
         setContentPane(tabbedPane);
 
+        suppliers = new ArrayList<>();
+        suppliers.add(new Supplier("BestSupplier", 10));
+
         init();
     }
 
     private void init() {
-//        tabbedPane.addTab("Ingredients", new IngredientManagerPanel(this));
+        tabbedPane.addTab("Ingredients", new IngredientManagerPanel(this));
         tabbedPane.addTab("Dishes", new DishManagerPanel(stockManagement));
-//        tabbedPane.addTab("Suppliers", new SupplierMAnagerPanel(this));
+//        tabbedPane.addTab("Suppliers", new SupplierManagerPanel(this));
 //        tabbedPane.addTab("Orders", new OrderManagerPanel(this));
 //        tabbedPane.addTab("Kitchen staff", new KitchenStaffManagerPanel(this));
 //        tabbedPane.addTab("Drones", new DroneManagerPanel(this));
@@ -31,7 +35,21 @@ public class BusinessApplication extends Application {
         setVisible(true);
     }
 
-    protected StockManagement getStockManagement() {
+    public StockManagement getStockManagement() {
         return stockManagement;
+    }
+
+    public ArrayList<Supplier> getSuppliers() {
+        return suppliers;
+    }
+
+    public Supplier getSupplierByName(String name) {
+        for (Supplier s : suppliers) {
+            if (s.getName().equals(name)) {
+                return s;
+            }
+        }
+
+        return null;
     }
 }

@@ -6,7 +6,7 @@ public class SushiDish {
     private String description;
     private int price;
     private int restockLevel;
-    private Map<Ingredient, Integer> ingredientAmounts = new TreeMap<>();   // Chose TreeMap so the ingredientAmounts are neatly sorted alphabetically
+    private TreeMap<Ingredient, Integer> ingredientAmounts = new TreeMap<>();   // Chose TreeMap so the ingredientAmounts are neatly sorted alphabetically
 
     public SushiDish() {
         new SushiDish("", "", 0, 0);
