@@ -42,6 +42,12 @@ public final class StockManagement {
         }
     }
 
+    protected void removeDish(SushiDish dish) {
+        synchronized (dishStock) {
+            dishStock.remove(dish);
+        }
+    }
+
     // Used by restockDish and sellDish. Checks stock remains positive integer
     private void updateDishStock(SushiDish sushiDish, Integer stock) throws Exception {
         if (stock < 0) throw new Exception("Stock cannot be negative!");

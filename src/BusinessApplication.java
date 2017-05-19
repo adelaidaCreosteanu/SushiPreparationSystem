@@ -18,22 +18,20 @@ public class BusinessApplication extends Application {
     }
 
     private void init() {
-        tabbedPane.addTab("Stock Manager", new StockPanel(this));
-        tabbedPane.addTab("Food&Supply Manager", new DishesPanel(this));
-        // add ordersPanel
-        // add staffPanel
+//        tabbedPane.addTab("Ingredients", new IngredientManagerPanel(this));
+        tabbedPane.addTab("Dishes", new DishManagerPanel(stockManagement));
+//        tabbedPane.addTab("Suppliers", new SupplierMAnagerPanel(this));
+//        tabbedPane.addTab("Orders", new OrderManagerPanel(this));
+//        tabbedPane.addTab("Kitchen staff", new KitchenStaffManagerPanel(this));
+//        tabbedPane.addTab("Drones", new DroneManagerPanel(this));
 
         // JFrame settings
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(new Dimension(600, 600));
+        setSize(new Dimension(800, 800));
         setVisible(true);
     }
 
-    public Hashtable<Ingredient, Integer> getIngredients() {
-        return stockManagement.getIngredients();
-    }
-
-    public Hashtable<SushiDish, Integer> getDishes() {
-        return stockManagement.getDishes();
+    protected StockManagement getStockManagement() {
+        return stockManagement;
     }
 }

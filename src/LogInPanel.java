@@ -33,7 +33,7 @@ public class LogInPanel extends JPanel {
         }
 
         setRegisterForm();
-        setRegisterView();
+        setRegisterButtons();
     }
 
     private void setRegisterForm() {
@@ -144,7 +144,7 @@ public class LogInPanel extends JPanel {
         add(changeViewBtn, buttonConstraints);
     }
 
-    private void setRegisterView() {
+    private void setRegisterButtons() {
         // REGISTER
         enterBtn.setText("Register");
         for (ActionListener al : enterBtn.getActionListeners()) {
@@ -179,7 +179,7 @@ public class LogInPanel extends JPanel {
         });
     }
 
-    private void setLoginView() {
+    private void setLoginButtons() {
         // LOGIN
         enterBtn.setText("Log in");
         for (ActionListener al : enterBtn.getActionListeners()) {
@@ -214,14 +214,14 @@ public class LogInPanel extends JPanel {
 
         if (option == LOGIN) {
             setLoginForm();
-            setLoginView();
+            setLoginButtons();
         } else if (option == REGISTER) {
             setRegisterForm();
-            setRegisterView();
+            setRegisterButtons();
         }
 
         revalidate();
-        repaint();      // necessary for removeAll to work
+        repaint();
     }
 
     private void exceptionThrown(Exception e) {

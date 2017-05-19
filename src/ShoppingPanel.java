@@ -212,7 +212,7 @@ public class ShoppingPanel extends JPanel {
         basketPanel.add(placeOrder, constraints);
     }
 
-    private class DisplayDishes extends Thread {
+    private class DisplayDishes extends Thread {        // Almost certainly won't work
         public void run() {
             while (true) {
                 try {
