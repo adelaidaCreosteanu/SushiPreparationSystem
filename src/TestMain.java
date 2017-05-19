@@ -34,8 +34,8 @@ public class TestMain {
             management.restockIngredient(seaWeed, 100);
             management.restockIngredient(tuna, 50);
 
-            new Thread(new KitchenStaff(management), "Chef").start();
-            new Thread(new KitchenStaff(management), "Sous-chef").start();
+            new KitchenStaff(management).start();
+            new KitchenStaff(management).start();
 
         } catch (Exception e) {
             e.printStackTrace();

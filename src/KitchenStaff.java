@@ -1,14 +1,17 @@
 import java.util.Hashtable;
 import java.util.Map;
 
-public class KitchenStaff implements Runnable {
+public class KitchenStaff extends Thread {
     private StockManagement stockManagement;
+    private boolean running;
+
     // Not static or final because different kitchen staff could have different time bounds and some kitchen staff might improve, changing their working time
     private int minTime = 20;
     private int maxTime = 60;
 
     public KitchenStaff(StockManagement stockManagement) {
         this.stockManagement = stockManagement;
+        running = true;
     }
 
     public void setWorkingTimeBounds(int minTime, int maxTime) {
@@ -16,10 +19,14 @@ public class KitchenStaff implements Runnable {
         this.maxTime = maxTime;
     }
 
+    public void setRunning(boolean running) {
+        this.running = running;
+    }
+
     public void run() {
         Hashtable<SushiDish, Integer> dishes;
 
-        while (true) {
+        while (running) {
             try {
                 dishes = stockManagement.getDishes();
 

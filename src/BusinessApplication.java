@@ -8,7 +8,7 @@ public class BusinessApplication extends Application {
 
     private ArrayList<Supplier> suppliers;
     private ArrayList<Order> orders;
-    private ArrayList<KitchenStaff> staff;
+    private ArrayList<KitchenStaff> staffArrayList;
 
     public BusinessApplication(StockManagement stockManagement) {
         super("Business Application");
@@ -19,9 +19,9 @@ public class BusinessApplication extends Application {
         setContentPane(tabbedPane);
 
         suppliers = new ArrayList<>();
-        suppliers.add(new Supplier("BestSupplier", 10));
+        suppliers.add(new Supplier("BestSupplier", 10));        // TODO: REMOVE
         orders = new ArrayList<>();
-        staff = new ArrayList<>();
+        staffArrayList = new ArrayList<>();
 
         init();
     }
@@ -31,7 +31,7 @@ public class BusinessApplication extends Application {
         tabbedPane.addTab("Dishes", new DishManagerPanel(stockManagement));
         tabbedPane.addTab("Suppliers", new SupplierManagerPanel(this));
         tabbedPane.addTab("Orders", new OrderManagerPanel(this));
-//        tabbedPane.addTab("Kitchen staff", new KitchenStaffManagerPanel(this));
+        tabbedPane.addTab("Kitchen staff", new KitchenStaffManagerPanel(this));
 //        tabbedPane.addTab("Drones", new DroneManagerPanel(this));
 
         // JFrame settings
@@ -82,5 +82,20 @@ public class BusinessApplication extends Application {
 
     public void removeOrder(Order order) {
         orders.remove(order);
+    }
+
+    public ArrayList<KitchenStaff> getStaff() {
+        return staffArrayList;
+    }
+
+    public void addKitchenStaff() {
+        KitchenStaff staff = new KitchenStaff(stockManagement);
+        staffArrayList.add(staff);
+        staff.start();
+    }
+
+    public void removeKitchenStaff(KitchenStaff staff) {
+        staffArrayList.remove(staff);
+        staff.setRunning(false);
     }
 }
