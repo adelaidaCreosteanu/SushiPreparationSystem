@@ -11,15 +11,16 @@ public class BusinessApplication extends Application {
     private ArrayList<Order> orders;
     private ArrayList<KitchenStaff> staffArrayList;
 
-    public BusinessApplication(StockManagement stockManagement) {
+    public BusinessApplication() {
         super("Business Application");
 
-        this.stockManagement = stockManagement;
+        stockManagement = new StockManagement();
         comms = new Comms(this);
         comms.start();
         tabbedPane = new JTabbedPane();
         setContentPane(tabbedPane);
 
+        customers = new ArrayList<>();
         suppliers = new ArrayList<>();
         orders = new ArrayList<>();
         staffArrayList = new ArrayList<>();
@@ -39,6 +40,28 @@ public class BusinessApplication extends Application {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(new Dimension(800, 800));
         setVisible(true);
+    }
+
+    public void receivedMessage(int request) {
+        switch (request) {
+            case Message.REQUEST_CUSTOMERS_ARRAYLIST:
+                comms.sendMessage(Message.GIVE_CUSTOMERS_ARRAYLIST, customers);
+                break;
+            case Message.REQUEST_DISHSTOCK_HASHMAP:
+                comms.sendMessage(Message.GIVE_DISHSTOCK_HASHMAP, stockManagement.getDishes());
+                break;
+        }
+    }
+
+    public void receivedMessage(int request, Object content) {
+        switch (request) {
+            case Message.REQUEST_REGISTER_CUSTOMER:
+                customers.add((Customer) content);
+                break;
+            case Message.REQUEST_PLACE_ORDER:
+                orders.add((Order) content);
+                break;
+        }
     }
 
     public StockManagement getStockManagement() {

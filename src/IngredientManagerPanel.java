@@ -224,7 +224,12 @@ public class IngredientManagerPanel extends JPanel {
         for (Supplier s : businessApplication.getSuppliers()) {
             supplierNames.add(s.getName());
         }
+        if (supplierNames.isEmpty()) {
+            supplierNames.add("  ");
+        }
+
         JSpinner supplierSpinner = new JSpinner(new SpinnerListModel(supplierNames));
+
         constraints.gridx = 1;
         newIngredientPanel.add(supplierSpinner, constraints);
 
@@ -248,5 +253,17 @@ public class IngredientManagerPanel extends JPanel {
         constraints.insets = new Insets(10, 0, 0, 10);
         constraints.anchor = GridBagConstraints.LAST_LINE_START;
         newIngredientPanel.add(addButton, constraints);
+
+        //  REFRESH BUTTON
+        JButton refreshButton = new JButton("Refresh");
+        refreshButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                displayAllIngredients();
+                displayNewIngredientWizard();
+            }
+        });
+
+        constraints.gridy = GridBagConstraints.RELATIVE;
+        newIngredientPanel.add(refreshButton, constraints);
     }
 }

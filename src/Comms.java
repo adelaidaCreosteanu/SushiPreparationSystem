@@ -29,8 +29,10 @@ public class Comms extends Thread {
     }
 
     public void run() {
-        while (true) {
-            listen();
+        if (application instanceof BusinessApplication) {
+            while (true) {
+                listen();
+            }
         }
     }
 

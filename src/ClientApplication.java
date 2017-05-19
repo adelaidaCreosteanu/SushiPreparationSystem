@@ -22,7 +22,7 @@ public class ClientApplication extends Application {    // extends JFrame
         contentPane.add(new LogInPanel(this));
 
         // JFrame settings
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(new Dimension(600, 600));
         setVisible(true);
     }

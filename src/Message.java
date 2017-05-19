@@ -6,6 +6,10 @@ public class Message implements Serializable {
     public static final int REQUEST_CUSTOMERS_ARRAYLIST = 2;
     public static final int REQUEST_PLACE_ORDER = 3;
 
+    public static final int GIVE_DISHSTOCK_HASHMAP = 4;
+    public static final int GIVE_CUSTOMERS_ARRAYLIST = 5;
+
+
 
     private int request;
     private Object content;
